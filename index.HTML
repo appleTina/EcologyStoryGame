@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>國中生物 4-5 生態系大探險</title>
+    <style>
+        :root {
+            --primary-color: #2D5A27; 
+            --water-color: #005B96;
+            --secondary-color: #F4F7F4; 
+            --accent-color: #D48806; 
+            --text-dark: #1A1A1A;
+            --white: #FFFFFF;
+            --danger: #E53E3E;
+            --correct-border: #2F855A;
+        }
+
+        body { 
+            font-family: "Microsoft JhengHei", "PingFang TC", Arial, sans-serif; 
+            background-color: #E2E8F0; 
+            margin: 0; 
+            display: flex; 
+            justify-content: center; 
+            align-items: center; 
+            min-height: 100vh;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        .slide-container { 
+            width: 95vw; 
+            max-width: 1100px; 
+            min-height: 85vh; 
+            background: var(--white); 
+            border-radius: 15px; 
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2); 
+            overflow: hidden; 
+            display: flex; 
+            flex-direction: column;
+            position: relative;
+        }
+
+        .header-bar {
+            height: 10px;
+            background: linear-gradient(90deg, var(--primary-color), var(--water-color));
+            width: 100%;
+        }
+
+        .content-area { padding: 20px 40px; flex-grow: 1; display: flex; flex-direction: column; justify-content: center; }
+
+        h1 { color: var(--primary-color); font-size: 26px; margin: 0 0 12px 0; border-left: 8px solid var(--primary-color); padding-left: 15px; }
+        
+        .layout-two-column { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 25px; flex-grow: 1; align-items: stretch; }
+
+        .image-window {
+            width: 100%;
+            height: 100%;
+            min-height: 420px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+            overflow: hidden;
+            position: relative;
+            background-color: #22252A; 
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .grid-photo {
+            max-width: 100%;
+            max-height: 100%;
+            width: auto;
+            height: auto;
+            object-fit: contain;
+        }
+        
+        .story-text { font-size: 16px; line-height: 1.6; color: var(--text-dark); background: #FFF; border: 2px solid #E2E8F0; padding: 15px; border-radius: 10px; margin-bottom: 15px; position: relative; }
+        .story-text::before { content: "📖 探險故事繪本"; font-weight: bold; display: block; color: var(--accent-color); margin-bottom: 6px; font-size: 14px; }
+        
+        .question-text { font-size: 17px; font-weight: bold; color: var(--primary-color); margin-bottom: 12px; display: flex; align-items: center; gap: 8px; line-height: 1.4; }
+        
+        .options-grid { display: grid; grid-template-columns: 1fr; gap: 8px; }
+        button.option-btn { 
+            background-color: var(--white);
+            color: var(--primary-color); 
+            border: 2px solid var(--primary-color); 
+            padding: 10px 16px; 
+            font-size: 16px; 
+            border-radius: 8px; 
+            cursor: pointer; 
+            transition: all 0.2s; 
+            font-weight: bold;
+            text-align: left;
+        }
+        button.option-btn:hover { background-color: var(--secondary-color); transform: translateX(5px); }
+        button:disabled { cursor: not-allowed; opacity: 0.8; }
+
+        button.selected-correct { background-color: var(--primary-color) !important; color: white !important; border-color: var(--primary-color) !important; }
+        
+        button.selected-wrong { 
+            background-color: #FFFFFF !important;
+            color: #E53E3E !important; 
+            border: 3px solid #E53E3E !important; 
+            font-weight: bold;
+        }
+        
+        button.highlight-correct-answer { 
+            background-color: #E53E3E !important;
+            color: #FFFFFF !important; 
+            border: 3px solid #E53E3E !important;
+            transform: scale(1.02);
+            box-shadow: 0 4px 12px rgba(229, 62, 62, 0.3);
+        }
+
+        .feedback-box { padding: 12px; border-radius: 8px; margin-top: 10px; font-weight: bold; font-size: 15px; line-height: 1.4; }
+        .correct { background: #E6FFFA; color: #234E52; border: 1px solid #81E6D9; }
+        .wrong { background: #FFF5F5; color: #822727; border: 2px solid var(--danger); }
+        .reason-text { font-size: 14px; font-weight: normal; margin-top: 6px; padding-top: 6px; border-top: 1px dashed rgba(0,0,0,0.1); color: #4A5568; line-height: 1.5; }
+
+        .navigation-group { display: flex; gap: 15px; margin-top: 12px; }
+        .nav-btn { flex: 1; text-align: center; padding: 12px; border-radius: 8px; font-weight: bold; cursor: pointer; border: none; font-size: 16px; transition: 0.3s; }
+        .btn-next { background: var(--primary-color); color: white; }
+        .btn-prev { background: #EDF2F7; color: #4A5568; border: 1px solid #CBD5E0; }
+
+        .path-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; width: 100%; margin-top: 20px; }
+        .path-card { border: 3px solid #E2E8F0; border-radius: 20px; padding: 30px; text-align: center; cursor: pointer; transition: 0.3s; background: #F8FAFC; }
+        .path-card:hover { transform: translateY(-10px); border-color: var(--accent-color); box-shadow: 0 10px 25px rgba(0,0,0,0.1); }
+        .path-card i { font-size: 60px; margin-bottom: 20px; display: block; }
+        .land-card { color: var(--primary-color); }
+        .water-card { color: var(--water-color); }
+        
+        .path-card.completed { border-color: #CBD5E0; background: #EDF2F7; cursor: not-allowed; transform: none !important; box-shadow: none !important; opacity: 0.7; }
+        .badge-completed { display: inline-block; background: #2D5A27; color: white; padding: 4px 12px; border-radius: 12px; font-size: 14px; margin-top: 10px; font-weight: bold; }
+
+        .footer { padding: 15px 40px; background: #F8FAFC; border-top: 1px solid #E2E8F0; display: flex; justify-content: space-between; align-items: center; }
+        .progress-bar-bg { width: 300px; height: 10px; background: #E2E8F0; border-radius: 5px; overflow: hidden; }
+        .progress-bar-fill { height: 100%; background: var(--primary-color); width: 0%; transition: width 0.4s; }
+
+        .hidden { display: none !important; }
+
+        .login-box { text-align: center; width: 100%; max-width: 550px; margin: 0 auto; }
+        input, select { padding: 12px; border: 2px solid #CBD5E0; border-radius: 8px; font-size: 16px; outline: none; }
+        select { width: 100%; margin-bottom: 15px; background: white; }
+
+        .stats-card-group { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin: 20px 0; }
+        .stat-badge { background: #F1F5F9; border-radius: 10px; padding: 15px; border: 1px solid #E2E8F0; }
+        .stat-badge .num { font-size: 28px; font-weight: bold; color: #0284C7; font-family: monospace; }
+    </style>
+</head>
+<body>
+
+<div class="slide-container">
+    <div class="header-bar"></div>
+    <div class="teacher-gate" id="teacher-gate-icon" title="進入教師管理後台">⚙️</div>
+
+    <div id="login-section" class="content-area">
+        <div class="login-box">
+            <h1 style="border:none; font-size: 32px; margin-bottom: 10px; text-align:center;">🌱 4-5 生態系的類型 闖關繪本</h1>
+            <select id="class-select"><option value="">--- 請選擇班級 ---</option></select>
+            <div style="background: #F8FAFC; padding: 15px; border-radius: 10px; border: 1px dashed #CBD5E0; margin-bottom: 15px;">
+                <div style="font-size: 14px; font-weight: bold; color: #718096; text-align: left; margin-bottom: 6px;">考察隊員</div>
+                <div style="display: flex; gap: 10px;">
+                    <input type="text" id="p1-seat" placeholder="座號" style="width: 80px;" maxlength="2">
+                    <input type="text" id="p1-name" placeholder="請輸入姓名" style="flex-grow: 1;">
+                </div>
+            </div>
+            <button id="start-btn" class="nav-btn btn-next" style="width: 100%; margin-top: 10px; font-size: 18px;">啟動地圖系統 ➔</button>
+        </div>
+    </div>
+
+    <div id="path-section" class="content-area hidden">
+        <h1 id="welcome-msg" style="border:none; text-align:center;">你好，探險員！</h1>
+        <div class="path-grid">
+            <div class="path-card land-card" id="card-land" onclick="choosePath('land')">
+                <i>🏔️</i><h2>陸域大探險</h2><p>穿越凍原、沙漠與森林</p>
+                <div id="badge-land" class="badge-completed hidden">✅ 已完成</div>
+            </div>
+            <div class="path-card water-card" id="card-water" onclick="choosePath('water')">
+                <i>🌊</i><h2>水域大探險</h2><p>深入河口、珊瑚礁與大洋</p>
+                <div id="badge-water" class="badge-completed hidden">✅ 已完成</div>
+            </div>
+        </div>
+    </div>
+
+    <div id="game-section" class="content-area hidden">
+        <h1 id="scene-title">關卡名稱</h1>
+        <div class="layout-two-column">
+            <div class="image-window">
+                <img src="" id="scene-img" class="grid-photo" alt="生態系場景" onerror="this.onerror=null; this.src='https://picsum.photos/600/400?random='+Math.random();">
+            </div>
+            <div>
+                <div id="story-content" class="story-text"></div>
+                <div id="question-content" class="question-text"></div>
+                <div class="options-grid" id="options-container"></div>
+                <div id="feedback-area" class="feedback-box hidden"></div>
+                <div class="navigation-group">
+                    <button id="prev-btn" class="nav-btn btn-prev">⬅️ 返回前頁</button>
+                    <button id="next-btn" class="nav-btn btn-next hidden">繼續探險 ➔</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="result-section" class="content-area hidden" style="text-align:center;">
+        <h1 style="border:none;">🏆 探險任務全面達成！</h1>
+        <div class="stats-card-group">
+            <div class="stat-badge"><div>🏔️ 陸域能量</div><div class="num" id="final-land-energy">0 分</div></div>
+            <div class="stat-badge"><div>🌊 水域能量</div><div class="num" id="final-water-energy">0 分</div></div>
+        </div>
+        <button id="upload-btn" class="nav-btn btn-next" style="max-width: 300px; margin: 0 auto;">📤 傳送完整報告</button>
+        <p id="status-msg" style="margin-top: 15px; color: var(--water-color); font-weight: bold;"></p>
+    </div>
+
+    <div class="footer hidden" id="game-footer">
+        <div class="progress-bar-bg"><div class="progress-bar-fill" id="progress"></div></div>
+        <div id="page-info" style="font-weight:bold; color:#64748B;">探險進度 1 / 6</div>
+    </div>
+</div>
+
+<script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+    import { getFirestore, collection, addDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
+
+    const firebaseConfig = {
+        apiKey: "AIzaSyDSJ7PDQ4BcNH21MPH_31W-VwJGJsZMI38",
+        authDomain: "ecology-for-7grade.firebaseapp.com",
+        projectId: "ecology-for-7grade",
+        storageBucket: "ecology-for-7grade.appspot.com",
+        messagingSenderId: "1031675154329",
+        appId: "1:1031675154329:web:6f8e71400d6c11d1d64d08"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const db = getFirestore(app);
+
+    const classSelect = document.getElementById('class-select');
+    for(let i=1; i<=15; i++) {
+        let c = "7" + String(i).padStart(2, '0');
+        let opt = document.createElement('option');
+        opt.value = c; opt.innerText = c + " 班";
+        classSelect.appendChild(opt);
+    }
+
+    let currentBatteryScore = 0; 
+    let landBatteryFinal = 0;    
+    let waterBatteryFinal = 0;
+    let totalErrorClicks = 0;    
+    let currentClassSelectValue = "";
+    let inputP1Seat = "";
+    let inputP1Name = "";
+
+    // ✨ 這裡使用的是活著的、公開的高畫質網路圖片網址（絕對路徑） ✨
+    // 這樣你直接上傳一個 HTML 檔到 GitHub 就有圖了，不用額外上傳圖片檔案！
+    const allQuizzes = {
+        land: [
+            { title: "第一站：❄️ 極寒凍原生態系", imgUrl: "https://images.unsplash.com/photo-1613149419134-2e9bfa6a125b?w=600&auto=format&fit=crop", story: "貓頭鷹博士啟動了時空探險車，第一站竟然把大家送到了北極圈！小綠一下車就狂打哆嗦：『天啊，這裡放眼望去全是冰雪，冷到骨頭裡，而且好像好幾個月都沒下一場雨或雪了！』", question: "阿傑好奇地問：『博士，在這種地表凍結、連一棵樹都長不出來的極寒世界裡，這些貼在地面上的微小綠色生命到底是什麼生產者呀？』", options: ["A. 這是一直被冰凍著的巨型針葉樹苗", "B. 這是非常耐寒的地衣與蘚苔植物", "C. 這是從熱帶飄過來的仙人掌種子", "D. 智慧型游到陸地上來生活的浮游藻類"], ans: 1, reason: "依據課本第135頁，凍原生態系生產者主要是『地衣』和『蘚苔植物』！" },
+            { title: "第二站：🌲 挺拔針葉林生態系", imgUrl: "https://images.unsplash.com/photo-1544256718-3bcf237f3974?w=600&auto=format&fit=crop", story: "探險車漸漸往南方移動，氣溫稍微回升了一點，但依然帶著陣陣寒意。小綠搖下車窗，發現四周的景色變了：『哇！出現好多高聳的大樹！』", question: "在這種寒冷的多樹森林中，哪種動物最可能正躲在針葉林後看著他們？", options: ["A. 習慣在乾旱沙漠中生活的魔蜥", "B. 擁有厚重毛皮、能在寒冷森林生存的馴鹿與棕熊", "C. 喜歡在非洲大草原奔跑的長頸鹿", "D. 依賴潮汐與豐富海水生存的招潮蟹"], ans: 1, reason: "針葉林環境寒冷。這裡生活的動物（如馴鹿、黑熊、松鼠）必須擁有厚重的皮毛來抵禦寒冷。" },
+            { title: "第三站：🍂 四季落葉林生態系", imgUrl: "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=600&auto=format&fit=crop", story: "探險車繼續前陣，溫暖的陽光灑了進來。小綠興奮地叫道：『看！這裡的樹葉有紅有黃，還一直掉落！』博士點點頭：『這是落葉闊葉林。』", question: "阿傑發現遠處的樹洞裡似乎有小眼睛在閃爍。阿傑疑惑地問：『這些忙著搬堅果的小生物，在落葉林裡的生活有什麼特殊習性嗎？』", options: ["A. 牠們等一下要飛去熱帶海洋產卵", "B. 牠們正在囤積食物，準備在冬天落葉寒冷時度過寒冬", "C. 牠們正在練習把身體變成像葉子一樣的針狀構造", "D. 牠們準備在冬天時脫落自己身上的毛皮"], ans: 1, reason: "落葉林具分明四季。冬天時哺乳動物（如囓齒類）會大量儲食，或準備冬眠。" },
+            { title: "第四站：🌴 狂暴熱帶雨林生態系", imgUrl: "https://images.unsplash.com/photo-1516026672322-bc52d61a55d5?w=600&auto=format&fit=crop", story: "轟隆隆！探險車開進了赤道區域，天空正下著滂沱大雨，車內顯示外面又熱又濕。小綠擦擦霧氣：『這裡的樹木高到看不見天頂！』", question: "阿傑看著一片漆黑的森林底層，驚奇地問：『博士，為什麼頭頂上的雨林陽光這麼刺眼，但我們踩著的森林底層卻黑得像晚上一樣啊？』", options: ["A. 因為熱帶雨林的樹木會吸收所有白光", "B. 因為高大喬木的茂密樹冠與層層枝葉重疊，把陽光全都遮擋住了", "C. 因為雨林底層的土壤有毒，會讓陽光自動消失", "D. 因為這裡每天24小時都在發生日全蝕"], ans: 1, reason: "熱帶雨林上方茂密的樹冠層層疊疊遮天蔽日。這導致陽光幾乎被攔截，底層非常陰暗。" },
+            { title: "第五站：🌾 遼闊草原生態系", imgUrl: "https://images.unsplash.com/photo-1547471080-7cc2caa01a7e?w=600&auto=format&fit=crop", story: "探險車開進了一片無邊無際的草海。小綠看著窗外：『哇！視野突然變開闊了！』博士指著遠方：『這就是乾濕季分明的草原。』", question: "開闊草地缺乏樹木遮蔽，這裡的消費者動物通常具備什麼生存優勢？", options: ["A. 演化出不擅長移動的沉重身體", "B. 體表長出厚厚的脂肪層來防凍", "C. 視覺敏銳、善於高速奔跑或擅長挖洞穴居以躲避天敵", "D. 演化出可以在水中長時間潛水的鰓"], ans: 2, reason: "草原生態系視野遼闊。這裡的動物通常演化出『行動敏捷、善於奔跑』或『擅長挖洞穴居』的特徵。" },
+            { title: "第六站：🌵 酷熱沙漠生態系", imgUrl: "https://images.unsplash.com/photo-1509316975850-ff9c5deb0cd9?w=600&auto=format&fit=crop", story: "最後一站來到漫天沙塵的荒漠，熱浪襲來。年雨量竟然小於250毫米！博士點點頭：『這是極度乾燥的沙漠。』", question: "阿傑問道：『在這種白天熱、晚上冷，且幾乎沒有水的地方，什麼樣的特殊生物才能生存呢？』", options: ["A. 身體需要大量水分的青蛙", "B. 演化出肥厚莖儲水的仙人掌，以及具有外殼或能減少水分散失的跳鼠、魔蜥、蠍子", "C. 喜歡在開闊草地奔跑的非洲長頸鹿", "D. 生活在高大喬木頂端的鸚鵡"], ans: 1, reason: "沙漠極端乾燥。生產者具針狀葉與儲水莖。消費者則具有特殊構造減少水分散失，或是具夜行性。" }
+        ],
+        water: [
+            { title: "第一站：💧 湍急淡水生態系", imgUrl: "https://images.unsplash.com/photo-1444464666168-49d633b86797?w=600&auto=format&fit=crop", story: "博士將探險艇啟動，第一站來到了清澈的高山溪流。小綠看著窗外湍急的水流：『哇！水流好急！』", question: "在這種水流湍急、陽光不足的溪流「上游」，最主要的能量基礎是什麼？", options: ["A. 岸邊高大樹木落入水中的枯枝落葉", "B. 水中大量生長的巨型海帶", "C. 珊瑚礁產生的底棲有機物", "D. 釋放特殊化學物質來發電"], ans: 0, reason: "溪流上游主要能量來源是『岸邊植物掉入水中的枯枝落葉』。" },
+            { title: "第二站：🦀 變幻河口生態系", imgUrl: "https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=600&auto=format&fit=crop", story: "探險艇開到了河海交會口。阿傑皺著眉頭：『這裡的水混濁多了，而且一下子鹹一下子淡。』", question: "阿傑好奇地問：『既然環境這麼糟糕，為什麼這裡的生物「數量」反而這麼龐大啊？』", options: ["A. 這裡水溫終年固定在零度左右", "B. 這裡完全沒有任何掠食者", "C. 上游河流帶來了極其豐富的營養鹽", "D. 因為紅樹林會自動製造淡水"], ans: 2, reason: "河口生態系因為『河流上游帶來了豐富的營養鹽』，食物充足，使適應環境的生物數量非常龐大。" },
+            { title: "第三站：🐚 韻律潮間帶生態系", imgUrl: "https://images.unsplash.com/photo-1501854140801-50d01698950b?w=600&auto=format&fit=crop", story: "海水慢慢退去，露出了大片岩石。小綠發現石頭上長滿了白色的藤壺。", question: "這些生物必須忍受漲潮被淹、退潮曝曬的考驗。牠們通常有哪些適應特徵？", options: ["A. 具有外殼或能分泌黏液防止水分散失", "B. 骨骼內部完全中空可以隨風飄浮", "C. 退潮時游回深海吃浮游植物", "D. 能在極度缺水的環境下長出針狀葉"], ans: 0, reason: "潮間帶生物通常具備堅硬的外殼、能緊緊附著在岩石上，或在退潮時閉殼並分泌黏液以防曬防脫水。" }
+        ]
+    };
+
+    window.choosePath = function(path) {
+        document.getElementById('path-section').classList.add('hidden');
+        document.getElementById('game-section').classList.remove('hidden');
+        document.getElementById('game-footer').classList.remove('hidden');
+        initGame(path);
+    };
+
+    let currentPath = "";
+    let currentQuizIndex = 0;
+    
+    function initGame(path) { currentPath = path; currentQuizIndex = 0; showQuiz(); }
+
+    function showQuiz() {
+        const quiz = allQuizzes[currentPath][currentQuizIndex];
+        document.getElementById('scene-title').innerText = quiz.title;
+        document.getElementById('scene-img').src = quiz.imgUrl;
+        document.getElementById('story-content').innerText = quiz.story;
+        document.getElementById('question-content').innerText = quiz.question;
+        document.getElementById('progress').style.width = ((currentQuizIndex + 1) / allQuizzes[currentPath].length * 100) + "%";
+        document.getElementById('page-info').innerText = "探險進度 " + (currentQuizIndex + 1) + " / " + allQuizzes[currentPath].length;
+        
+        const container = document.getElementById('options-container');
+        container.innerHTML = "";
+        document.getElementById('feedback-area').classList.add('hidden');
+        document.getElementById('next-btn').classList.add('hidden');
+
+        quiz.options.forEach((opt, idx) => {
+            const btn = document.createElement('button');
+            btn.className = "option-btn"; btn.innerText = opt;
+            btn.onclick = () => checkAnswer(idx, btn);
+            container.appendChild(btn);
+        });
+    }
+
+    function checkAnswer(selectedIdx, btn) {
+        const quiz = allQuizzes[currentPath][currentQuizIndex];
+        const feedback = document.getElementById('feedback-area');
+        feedback.classList.remove('hidden');
+        const buttons = document.getElementById('options-container').getElementsByTagName('button');
+        for(let b of buttons) b.disabled = true;
+
+        if(selectedIdx === quiz.ans) {
+            btn.classList.add('selected-correct');
+            feedback.className = "feedback-box correct";
+            feedback.innerHTML = "🎯 答對了！<div class='reason-text'>" + quiz.reason + "</div>";
+            currentBatteryScore += 20;
+        } else {
+            btn.classList.add('selected-wrong');
+            buttons[quiz.ans].classList.add('highlight-correct-answer');
+            feedback.className = "feedback-box wrong";
+            feedback.innerHTML = "❌ 答錯了！<div class='reason-text'>" + quiz.reason + "</div>";
+            totalErrorClicks++;
+        }
+        document.getElementById('next-btn').classList.remove('hidden');
+    }
+
+    document.getElementById('next-btn').onclick = () => {
+        currentQuizIndex++;
+        if(currentQuizIndex < allQuizzes[currentPath].length) { showQuiz(); } 
+        else {
+            document.getElementById('game-section').classList.add('hidden');
+            document.getElementById('game-footer').classList.add('hidden');
+            document.getElementById('path-section').classList.remove('hidden');
+            document.getElementById('badge-' + currentPath).classList.remove('hidden');
+            
+            if(currentPath === 'land') landBatteryFinal = currentBatteryScore;
+            if(currentPath === 'water') waterBatteryFinal = currentBatteryScore;
+
+            if(!document.getElementById('badge-land').classList.contains('hidden') && 
+               !document.getElementById('badge-water').classList.contains('hidden')) {
+                document.getElementById('path-section').classList.add('hidden');
+                document.getElementById('result-section').classList.remove('hidden');
+                document.getElementById('final-land-energy').innerText = landBatteryFinal + " 分";
+                document.getElementById('final-water-energy').innerText = waterBatteryFinal + " 分";
+            }
+        }
+    };
+
+    document.getElementById('start-btn').onclick = () => {
+        const cls = document.getElementById('class-select').value;
+        const seat = document.getElementById('p1-seat').value;
+        const name = document.getElementById('p1-name').value;
+        if(!cls || !seat || !name) { alert('⚠️ 請填寫完整欄位！'); return; }
+        currentClassSelectValue = cls; inputP1Seat = seat; inputP1Name = name;
+        document.getElementById('welcome-msg').innerText = "你好，" + cls + "班 " + seat + "號 " + name + " 探險員！";
+        document.getElementById('login-section').classList.add('hidden');
+        document.getElementById('path-section').classList.remove('hidden');
+    };
+
+    document.getElementById('upload-btn').onclick = async () => {
+        const btn = document.getElementById('upload-btn');
+        btn.innerText = "⏳ 報告傳送中..."; btn.disabled = true;
+        try {
+            await addDoc(collection(db, "student_scores"), {
+                className: currentClassSelectValue, seat: inputP1Seat, studentName: inputP1Name,
+                landScore: landBatteryFinal, waterScore: waterBatteryFinal, timestamp: serverTimestamp()
+            });
+            document.getElementById('status-msg').innerText = "📤 報告傳送成功！";
+            btn.innerText = "✅ 傳送完畢";
+        } catch(e) {
+            alert("傳送失敗：" + e.message); btn.innerText = "📤 重新傳送報告"; btn.disabled = false;
+        }
+    };
+</script>
+</body>
+</html>
