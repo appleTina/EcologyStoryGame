@@ -81,7 +81,7 @@
         
         .options-grid { display: grid; grid-template-columns: 1fr; gap: 8px; }
         button.option-btn { 
-            background-color: var(--white);
+            background-color: var(--white); 
             color: var(--primary-color); 
             border: 2px solid var(--primary-color); 
             padding: 10px 16px; 
@@ -96,31 +96,29 @@
         button:disabled { cursor: not-allowed; opacity: 0.8; }
 
         button.selected-correct { background-color: var(--primary-color) !important; color: white !important; border-color: var(--primary-color) !important; }
-        
-        button.selected-wrong { 
-            background-color: #FFFFFF !important;
-            color: #E53E3E !important; 
-            border: 3px solid #E53E3E !important; 
-            font-weight: bold;
-        }
-        
-        button.highlight-correct-answer { 
-            background-color: #E53E3E !important;
-            color: #FFFFFF !important; 
-            border: 3px solid #E53E3E !important;
-            transform: scale(1.02);
-            box-shadow: 0 4px 12px rgba(229, 62, 62, 0.3);
-        }
+        button.selected-wrong { background-color: #FFFFFF !important; color: #E53E3E !important; border: 3px solid #E53E3E !important; font-weight: bold; }
+
+        .select-layout { width: 100%; display: flex; flex-direction: column; gap: 10px; margin-top: 5px; }
+        .select-style { width: 100%; padding: 12px; font-size: 16px; font-weight: bold; border: 2px solid var(--primary-color); border-radius: 8px; background-color: white; color: var(--primary-color); cursor: pointer; outline: none; }
+        .select-submit-btn { background-color: var(--primary-color); color: white; border: none; padding: 12px; font-size: 16px; font-weight: bold; border-radius: 8px; cursor: pointer; transition: 0.2s; text-align: center; }
+        .select-submit-btn:hover { background-color: #1E3F1A; }
 
         .feedback-box { padding: 12px; border-radius: 8px; margin-top: 10px; font-weight: bold; font-size: 15px; line-height: 1.4; }
         .correct { background: #E6FFFA; color: #234E52; border: 1px solid #81E6D9; }
         .wrong { background: #FFF5F5; color: #822727; border: 2px solid var(--danger); }
-        .reason-text { font-size: 14px; font-weight: normal; margin-top: 6px; padding-top: 6px; border-top: 1px dashed rgba(0,0,0,0.1); color: #4A5568; line-height: 1.5; }
+        .reason-text { font-size: 14px; font-weight: normal; margin-top: 6px; padding-top: 6px; border-top: 1px dashed rgba(0,0,0,0.1); color: #4A5568; line-height: 1.5; white-space: pre-line; }
+
+        .video-btn-link { display: inline-flex; align-items: center; gap: 8px; background: #FF0000; color: white; padding: 8px 16px; border-radius: 20px; font-weight: bold; text-decoration: none; margin-top: 10px; transition: 0.2s; font-size: 14px; box-shadow: 0 4px 10px rgba(255,0,0,0.2); }
+        .video-btn-link:hover { background: #CC0000; transform: scale(1.05); }
 
         .navigation-group { display: flex; gap: 15px; margin-top: 12px; }
         .nav-btn { flex: 1; text-align: center; padding: 12px; border-radius: 8px; font-weight: bold; cursor: pointer; border: none; font-size: 16px; transition: 0.3s; }
         .btn-next { background: var(--primary-color); color: white; }
         .btn-prev { background: #EDF2F7; color: #4A5568; border: 1px solid #CBD5E0; }
+
+        .mode-select { margin-bottom: 20px; text-align: center; }
+        .mode-btn { background-color: #E2E8F0; color: #4A5568; border: none; padding: 10px 25px; font-size: 16px; border-radius: 20px; cursor: pointer; margin: 0 5px; font-weight: bold; transition: 0.2s; }
+        .mode-btn.active { background-color: var(--primary-color); color: var(--white); }
 
         .path-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; width: 100%; margin-top: 20px; }
         .path-card { border: 3px solid #E2E8F0; border-radius: 20px; padding: 30px; text-align: center; cursor: pointer; transition: 0.3s; background: #F8FAFC; }
@@ -132,6 +130,23 @@
         .path-card.completed { border-color: #CBD5E0; background: #EDF2F7; cursor: not-allowed; transform: none !important; box-shadow: none !important; opacity: 0.7; }
         .badge-completed { display: inline-block; background: #2D5A27; color: white; padding: 4px 12px; border-radius: 12px; font-size: 14px; margin-top: 10px; font-weight: bold; }
 
+        .battery-widget { display: flex; align-items: center; background: #1E293B; border-radius: 12px; padding: 12px 20px; margin-bottom: 15px; color: #F8FAFC; gap: 15px; box-shadow: inset 0 2px 4px rgba(0,0,0,0.3); }
+        .battery-label { font-weight: bold; font-size: 15px; color: #38BDF8; min-width: 140px; }
+        .battery-shell { flex-grow: 1; height: 24px; background: #0F172A; border: 2px solid #64748B; border-radius: 6px; padding: 2px; position: relative; display: flex; }
+        .battery-shell::after { content: ""; position: absolute; right: -6px; top: 5px; width: 4px; height: 10px; background: #64748B; border-radius: 0 2px 2px 0; }
+        .battery-level { height: 100%; background: linear-gradient(90deg, #4ADE80, #22C55E); width: 0%; border-radius: 3px; transition: width 0.3s ease, background-color 0.3s ease; }
+        .battery-text { font-weight: bold; font-size: 16px; min-width: 90px; text-align: right; font-family: monospace; }
+
+        .review-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin: 10px 0; }
+        .ecosystem-box { border: 2px dashed #CBD5E0; border-radius: 12px; padding: 10px; background: #F8FAFC; text-align: center; transition: 0.2s; cursor: pointer; }
+        .ecosystem-box:hover { border-color: var(--primary-color); background: #F0FDF4; }
+        .ecosystem-box h3 { margin: 0 0 6px 0; color: var(--water-color); font-size: 14px; }
+        .drop-zone { min-height: 100px; background: #EDF2F7; border-radius: 8px; display: flex; flex-direction: column; gap: 4px; padding: 6px; justify-content: flex-start; align-items: center; font-size: 12px; color: #718096; font-weight: bold; }
+        .review-pool { display: flex; flex-wrap: wrap; gap: 6px; justify-content: center; margin-top: 10px; background: #F1F5F9; padding: 12px; border-radius: 12px; max-height: 180px; overflow-y: auto; }
+        .pool-item { background: white; border: 2px solid var(--accent-color); color: #B45309; padding: 5px 10px; border-radius: 20px; font-weight: bold; cursor: pointer; transition: 0.2s; font-size: 12px; }
+        .pool-item.selected { background: var(--accent-color) !important; color: white !important; transform: scale(1.05); box-shadow: 0 4px 8px rgba(212,136,6,0.3); }
+        .placed-item { background: #E6FFFA; border: 1px solid #81E6D9; color: #234E52; width: 95%; padding: 3px 0; border-radius: 6px; text-align: center; font-weight: bold; font-size: 11px; margin-bottom: 2px; line-height: 1.3; }
+
         .footer { padding: 15px 40px; background: #F8FAFC; border-top: 1px solid #E2E8F0; display: flex; justify-content: space-between; align-items: center; }
         .progress-bar-bg { width: 300px; height: 10px; background: #E2E8F0; border-radius: 5px; overflow: hidden; }
         .progress-bar-fill { height: 100%; background: var(--primary-color); width: 0%; transition: width 0.4s; }
@@ -139,47 +154,84 @@
         .hidden { display: none !important; }
 
         .login-box { text-align: center; width: 100%; max-width: 550px; margin: 0 auto; }
+        .player-box { background: #F8FAFC; padding: 15px; border-radius: 10px; border: 1px dashed #CBD5E0; margin-bottom: 15px; }
+        .player-title { font-size: 14px; font-weight: bold; color: #718096; text-align: left; margin-bottom: 6px; }
+        .input-group { display: flex; gap: 10px; }
         input, select { padding: 12px; border: 2px solid #CBD5E0; border-radius: 8px; font-size: 16px; outline: none; }
         select { width: 100%; margin-bottom: 15px; background: white; }
 
         .stats-card-group { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin: 20px 0; }
         .stat-badge { background: #F1F5F9; border-radius: 10px; padding: 15px; border: 1px solid #E2E8F0; }
         .stat-badge .num { font-size: 28px; font-weight: bold; color: #0284C7; font-family: monospace; }
-        
+        .stat-badge.error-badge .num { color: #EF4444; }
+
         .teacher-gate { position: absolute; top: 15px; left: 15px; font-size: 20px; cursor: pointer; opacity: 0.3; transition: 0.3s; z-index: 100; }
         .teacher-gate:hover { opacity: 1; transform: rotate(45deg); }
+        .class-tabs { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 15px; background: #F1F5F9; padding: 10px; border-radius: 8px; }
+        .tab-btn { background: white; border: 1px solid #CBD5E0; padding: 6px 14px; border-radius: 6px; cursor: pointer; font-weight: bold; color: #4A5568; }
+        .tab-btn.active { background: var(--water-color); color: white; border-color: var(--water-color); }
+        .student-table-container { flex-grow: 1; overflow-y: auto; max-height: 480px; margin-bottom: 15px; }
+        .student-card { background: #F8FAFC; border: 1px solid #E2E8F0; border-radius: 8px; padding: 12px 15px; margin-bottom: 10px; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 2px 4px rgba(0,0,0,0.02); }
+        .student-info { display: flex; flex-direction: column; gap: 4px; }
+        .student-meta { font-size: 18px; font-weight: bold; color: #1E293B; }
+        .student-data-line { font-size: 13px; color: #64748B; }
+        .student-data-line span { font-weight: bold; margin-right: 12px; color: #334155; }
+        .class-btn-delete { background: #FFEEEE; color: #DC2626; border: 1px solid #FCA5A5; padding: 6px 12px; border-radius: 6px; cursor: pointer; font-size: 13px; font-weight: bold; transition: 0.2s; }
+        .class-btn-delete:hover { background: #DC2626; color: white; }
     </style>
 </head>
 <body>
 
 <div class="slide-container">
     <div class="header-bar"></div>
+    
     <div class="teacher-gate" id="teacher-gate-icon" title="進入教師管理後台">⚙️</div>
 
     <div id="login-section" class="content-area">
         <div class="login-box">
             <h1 style="border:none; font-size: 32px; margin-bottom: 10px; text-align:center;">🌱 4-5 生態系的類型 闖關繪本</h1>
+            
+            <div class="mode-select">
+                <button class="mode-btn active" id="btn-single" type="button">👤 單人挑戰</button>
+                <button class="mode-btn" id="btn-double" type="button">👥 雙人合作</button>
+            </div>
+            
             <select id="class-select"><option value="">--- 請選擇班級 ---</option></select>
-            <div style="background: #F8FAFC; padding: 15px; border-radius: 10px; border: 1px dashed #CBD5E0; margin-bottom: 15px;">
-                <div style="font-size: 14px; font-weight: bold; color: #718096; text-align: left; margin-bottom: 6px;">考察隊員</div>
-                <div style="display: flex; gap: 10px;">
+            
+            <div class="player-box" id="p1-box">
+                <div class="player-title" id="p1-label">考察隊員</div>
+                <div class="input-group">
                     <input type="text" id="p1-seat" placeholder="座號" style="width: 80px;" maxlength="2">
                     <input type="text" id="p1-name" placeholder="請輸入姓名" style="flex-grow: 1;">
                 </div>
             </div>
+
+            <div class="player-box hidden" id="p2-box">
+                <div class="player-title">考察隊員二</div>
+                <div class="input-group">
+                    <input type="text" id="p2-seat" placeholder="座號" style="width: 80px;" maxlength="2">
+                    <input type="text" id="p2-name" placeholder="請輸入姓名" style="flex-grow: 1;">
+                </div>
+            </div>
+
             <button id="start-btn" class="nav-btn btn-next" style="width: 100%; margin-top: 10px; font-size: 18px;">啟動地圖系統 ➔</button>
         </div>
     </div>
 
     <div id="path-section" class="content-area hidden">
         <h1 id="welcome-msg" style="border:none; text-align:center;">你好，探險員！</h1>
+        <p style="text-align:center; color: #4A5568;">請選擇今日要執行特訓的領域（必須完成兩個領域才能進行結算）：</p>
         <div class="path-grid">
             <div class="path-card land-card" id="card-land" onclick="choosePath('land')">
-                <i>🏔️</i><h2>陸域大探險</h2><p>穿越凍原、沙漠與森林</p>
+                <i>🏔️</i>
+                <h2>陸域大探險</h2>
+                <p>穿越凍原、沙漠與森林<br>解開陸地生物的生存之謎</p>
                 <div id="badge-land" class="badge-completed hidden">✅ 已完成</div>
             </div>
             <div class="path-card water-card" id="card-water" onclick="choosePath('water')">
-                <i>🌊</i><h2>水域大探險</h2><p>深入河口、珊瑚礁與大洋</p>
+                <i>🌊</i>
+                <h2>水域大探險</h2>
+                <p>深入河口、珊瑚礁與大洋<br>探索地表 70% 的神秘水世界</p>
                 <div id="badge-water" class="badge-completed hidden">✅ 已完成</div>
             </div>
         </div>
@@ -196,6 +248,7 @@
                 <div id="question-content" class="question-text"></div>
                 <div class="options-grid" id="options-container"></div>
                 <div id="feedback-area" class="feedback-box hidden"></div>
+                
                 <div class="navigation-group">
                     <button id="prev-btn" class="nav-btn btn-prev">⬅️ 返回前頁</button>
                     <button id="next-btn" class="nav-btn btn-next hidden">繼續探險 ➔</button>
@@ -204,25 +257,76 @@
         </div>
     </div>
 
-    <div id="result-section" class="content-area hidden" style="text-align:center;">
-        <h1 style="border:none;">🏆 探險任務全面達成！</h1>
-        <div class="stats-card-group">
-            <div class="stat-badge"><div>🏔️ 陸域能量</div><div class="num" id="final-land-energy">0 分</div></div>
-            <div class="stat-badge"><div>🌊 水域能量</div><div class="num" id="final-water-energy">0 分</div></div>
+    <div id="review-section" class="content-area hidden">
+        <h1 id="review-main-title">📜 考察日誌充能任務</h1>
+        
+        <div class="battery-widget">
+            <div class="battery-label" id="battery-title">🔋 探險車核心電池</div>
+            <div class="battery-shell">
+                <div class="battery-level" id="live-battery-fill"></div>
+            </div>
+            <div class="battery-text" id="live-battery-text">0 / 100 🔋</div>
         </div>
-        <button id="upload-btn" class="nav-btn btn-next" style="max-width: 300px; margin: 0 auto;">📤 傳送完整報告</button>
+
+        <div class="story-text" id="review-story-text"></div>
+        
+        <div class="review-grid" id="review-grid-container"></div>
+        <div class="review-pool" id="items-pool"></div>
+        <div id="review-feedback" class="feedback-box hidden"></div>
+
+        <div class="navigation-group">
+            <button id="review-next-btn" class="nav-btn btn-next hidden" onclick="finishReview()">解鎖完成！啟動傳送陣 ➔</button>
+        </div>
+    </div>
+
+    <div id="result-section" class="content-area hidden" style="text-align:center;">
+        <h1 style="border:none;">🏆 雙路徑探險任務全面達成！</h1>
+        <div id="final-stats" style="font-size:22px; margin: 10px; line-height: 1.4; font-weight: bold; color: var(--primary-color);"></div>
+        
+        <div class="stats-card-group">
+            <div class="stat-badge">
+                <div>🏔️ 陸域日誌能量</div>
+                <div class="num" id="final-land-energy">0 分</div>
+            </div>
+            <div class="stat-badge">
+                <div>🌊 水域日誌能量</div>
+                <div class="num" id="final-water-energy">0 分</div>
+            </div>
+            <div class="stat-badge error-badge" style="grid-column: span 2;">
+                <div>⚠️ 總考查貼錯（亂點）次數</div>
+                <div class="num" id="final-error-clicks">0 次</div>
+            </div>
+        </div>
+
+        <div class="navigation-group" style="justify-content:center; max-width: 400px; margin: 0 auto;">
+            <button onclick="location.reload()" class="nav-btn btn-prev" style="flex:1;">🔄 再次挑戰</button>
+            <button id="upload-btn" class="nav-btn btn-next" style="flex:1;">📤 傳送完整報告</button>
+        </div>
         <p id="status-msg" style="margin-top: 15px; color: var(--water-color); font-weight: bold;"></p>
+    </div>
+
+    <div id="teacher-section" class="content-area hidden">
+        <h1 style="border-color: var(--water-color); color: var(--water-color);">📊 生態大探險 - 教師戰情主控台</h1>
+        <p style="color:#64748B; margin-top:-5px; font-size:14px;">可在這裡觀察各班進度、核心分數，若有學生選錯班級，可點擊右側按鈕刪除該筆資料讓他重做。</p>
+        
+        <div class="class-tabs" id="teacher-class-tabs"></div>
+        
+        <div class="student-table-container" id="student-cards-list">
+            <div style="text-align:center; padding:30px; color:#94A3B8;">請點選上方班級按鈕讀取資料...</div>
+        </div>
+        
+        <button class="nav-btn btn-prev" id="teacher-back-btn" style="max-width:200px;">⬅️ 返回登入首頁</button>
     </div>
 
     <div class="footer hidden" id="game-footer">
         <div class="progress-bar-bg"><div class="progress-bar-fill" id="progress"></div></div>
-        <div id="page-info" style="font-weight:bold; color:#64748B;">探險進度 1 / 6</div>
+        <div id="page-info" style="font-weight:bold; color:#64748B;">探險進度 1 / 7</div>
     </div>
 </div>
 
 <script type="module">
     import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
-    import { getFirestore, collection, addDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
+    import { getFirestore, collection, addDoc, getDocs, deleteDoc, doc, serverTimestamp, query, orderBy } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
 
     const firebaseConfig = {
         apiKey: "AIzaSyDSJ7PDQ4BcNH21MPH_31W-VwJGJsZMI38",
@@ -244,6 +348,28 @@
         classSelect.appendChild(opt);
     }
 
+    let isDoubleMode = false;
+    const btnSingle = document.getElementById('btn-single');
+    const btnDouble = document.getElementById('btn-double');
+    const p1Label = document.getElementById('p1-label');
+    const p2Box = document.getElementById('p2-box');
+    
+    btnSingle.onclick = () => {
+        isDoubleMode = false;
+        btnSingle.classList.add('active');
+        btnDouble.classList.remove('active');
+        p2Box.classList.add('hidden');
+        p1Label.innerText = "考察隊員";
+    };
+
+    btnDouble.onclick = () => {
+        isDoubleMode = true;
+        btnDouble.classList.add('active');
+        btnSingle.classList.remove('active');
+        p2Box.classList.remove('hidden');
+        p1Label.innerText = "考察隊員一";
+    };
+
     let currentBatteryScore = 0; 
     let landBatteryFinal = 0;    
     let waterBatteryFinal = 0;
@@ -252,126 +378,1205 @@
     let inputP1Seat = "";
     let inputP1Name = "";
 
-    // 🌟 這裡使用標準 GitHub 相對路徑，發布後絕對 100% 有圖 🌟
     const allQuizzes = {
         land: [
-            { title: "第一站：❄️ 極寒凍原生態系", imgUrl: "images/tundra.jpg", story: "貓頭鷹博士啟動了時空探險車，第一站竟然把大家送到了北極圈！小綠一下車就狂打哆嗦：『天啊，這裡放眼望去全是冰雪，冷到骨頭裡，而且好像好幾個月都沒下一場雨或雪了！』", question: "阿傑好奇地問：『博士，在這種地表凍結、連一棵樹都長不出來的極寒世界裡，這些貼在地面上的微小綠色生命到底是什麼生產者呀？』", options: ["A. 這是一直被冰凍著的巨型針葉樹苗", "B. 這是非常耐寒的地衣與蘚苔植物", "C. 這是從熱帶飄過來的仙人掌種子", "D. 智慧型游到陸地上來生活的浮游藻類"], ans: 1, reason: "依據課本第135頁，凍原生態系生產者主要是『地衣』和『蘚苔植物』！" },
-            { title: "第二站：🌲 挺拔針葉林生態系", imgUrl: "images/taiga.jpg", story: "探險車漸漸往南方移動，氣溫稍微回升了一點，但依然帶著陣陣寒意。小綠搖下車窗，發現四周的景色變了：『哇！出現好多高聳的大樹！』", question: "在這種寒冷的多樹森林中，哪種動物最可能正躲在針葉林後看著他們？", options: ["A. 習慣在乾旱沙漠中生活的魔蜥", "B. 擁有厚重毛皮、能在寒冷森林生存的馴鹿與棕熊", "C. 喜歡在非洲大草原奔跑的長頸鹿", "D. 依賴潮汐與豐富海水生存的招潮蟹"], ans: 1, reason: "針葉林環境寒冷。這裡生活的動物（如馴鹿、黑熊、松鼠）必須擁有厚重的皮毛來抵禦寒冷。" },
-            { title: "第三站：🍂 四季落葉林生態系", imgUrl: "images/forest.jpg", story: "探險車繼續前進，溫暖的陽光灑了進來。小綠興奮地叫道：『看！這裡的樹葉有紅有黃，還一直掉落！』博士點點頭：『這是落葉闊葉林。』", question: "阿傑發現遠處的樹洞裡似乎有小眼睛在閃爍。阿傑疑惑地問：『這些忙著搬堅果的小生物，在落葉林裡的生活有什麼特殊習性嗎？』", options: ["A. 牠們等一下要飛去熱帶海洋產卵", "B. 牠們正在囤積食物，準備在冬天落葉寒冷時度過寒冬", "C. 牠們正在練習把身體變成像葉子一樣的針狀構造", "D. 牠們準備在冬天時脫落自己身上的毛皮"], ans: 1, reason: "落葉林具分明四季。冬天時哺乳動物（如囓齒類）會大量儲食，或準備冬眠。" },
-            { title: "第四站：🌴 狂暴熱帶雨林生態系", imgUrl: "images/rainforest.jpg", story: "轟隆隆！探險車開進了赤道區域，天空正下著滂沱大雨，車內顯示外面又熱又濕。小綠擦擦霧氣：『這裡的樹木高到看不見天頂！』", question: "阿傑看著一片漆黑的森林底層，驚奇地問：『博士，為什麼頭頂上的雨林陽光這麼刺眼，但我們踩著的森林底層卻黑得像晚上一樣啊？』", options: ["A. 因為熱帶雨林的樹木會吸收所有白光", "B. 因為高大喬木的茂密樹冠與層層枝葉重疊，把陽光全都遮擋住了", "C. 因為雨林底層的土壤有毒，會讓陽光自動消失", "D. 因為這裡每天24小時都在發生日全蝕"], ans: 1, reason: "熱帶雨林上方茂密的樹冠層層疊疊遮天蔽日。這導致陽光幾乎被攔截，底層非常陰暗。" },
-            { title: "第五站：🌾 遼闊草原生態系", imgUrl: "images/savanna.jpg", story: "探險車開進了一片無邊無際的草海。小綠看著窗外：『哇！視野突然變開闊了！』博士指著遠方：『這就是乾濕季分明的草原。』", question: "開闊草地缺乏樹木遮蔽，這裡的消費者動物通常具備什麼生存優勢？", options: ["A. 演化出不擅長移動的沉重身體", "B. 體表長出厚厚的脂肪層來防凍", "C. 視覺敏銳、善於高速奔跑或擅長挖洞穴居以躲避天敵", "D. 演化出可以在水中長時間潛水的鰓"], ans: 2, reason: "草原生態系視野遼闊。這裡的動物通常演化出『行動敏捷、善於奔跑』或『擅長挖洞穴居』的特徵。" },
-            { title: "第六站：🌵 酷熱沙漠生態系", imgUrl: "images/desert.jpg", story: "最後一站來到漫天沙塵的荒漠，熱浪襲來。年雨量竟然小於250毫米！博士點點頭：『這是極度乾燥的沙漠。』", question: "阿傑問道：『在這種白天熱、晚上冷，且幾乎沒有水的地方，什麼樣的特殊生物才能生存呢？』", options: ["A. 身體需要大量水分的青蛙", "B. 演化出肥厚莖儲水的仙人掌，以及具有外殼或能減少水分散失的跳鼠、魔蜥、蠍子", "C. 喜歡在開闊草地奔跑的非洲長頸鹿", "D. 生活在高大喬木頂端的鸚鵡"], ans: 1, reason: "沙漠極端乾燥。生產者具針狀葉與儲水莖。消費者則具有特殊構造減少水分散失，或是具夜行性。" }
+            {
+                title: "🎒 陸域探險：行前說明",
+                imgUrl: "images/land_intro.png", 
+                story: "珍妮博士：有人知道陸域環境可以依據何種條件，分成森林、草原、沙漠和凍原等不同環境？",
+                question: "💡 請選出決定陸域生態系類型的【3個正確條件】（卡牌點擊後可複選）：",
+                options: ["雨量", "氣溫", "光照時間", "土壤", "水量", "鹽分濃度"],
+                correctIndexes: [0, 1, 2], 
+                isMultipleCard: true,
+                wrongMessage: "❌ 組合不對喔！有些條件無法決定陸域生態系，請再重新觀察課本選一次！",
+                reason: "珍妮博士：沒錯！就是依據雨量、氣溫和光照時間，不同條件會決定不同的生產者的類型，進而影響消費者的種類。準備好了嗎?讓我們搭乘時空探險車出發囉！"
+            },
+            { 
+                title: "第一站(上)：❄️ 凍原生態系 - 環境觀測", 
+                imgUrl: "images/tundra.jpg", 
+                story: "珍妮博士啟動了時空探險車，第一站竟然把大家送到了北極圈！小藍一下車就冷得直發抖：「天啊，這裡放眼望去全是冰雪，冷到骨頭裡！」珍妮博士看了看儀表板：「這裡是凍原生態系，這裡的環境...」", 
+                question: "💡 請選出最符合凍原生態系特徵的【3個正確環境卡牌】（點擊後可複選）：", 
+                options: ["低溫少雨", "高溫多雨", "終年覆蓋冰雪", "位於高緯度地區", "沙塵暴氾濫", "四季溫暖分明"], 
+                correctIndexes: [0, 2, 3],
+                isMultipleCard: true,
+                videoUrl: "https://www.youtube.com/watch?v=dk1nSanysxM",
+                videoText: "🦊 點我觀看可愛北極狐影片",
+                wrongMessage: "❌ 觀測卡牌組合不合適！這不是凍原的特徵，請對照課本再試一次！",
+                reason: "珍妮博士繼續說：「你們觀察四周，這裡連植物都長不太出來。」\n小藍：「你們看！有可愛的狐狸耶！」"
+            },
+            { 
+                title: "第一站(下)：❄️ 凍原生態系 - 植物大解密", 
+                imgUrl: "images/tundra.jpg", 
+                story: "看完了超可愛的北極狐影片，探險車在漫天冰雪中繼續緩慢移動。小藍蹲在地上仔細觀察，發現在冰層的縫隙與解凍的岩石表面上，似乎貼著一些小小的、綠綠的生命。", 
+                question: "🤔 小藍好奇地問：『博士，在這種地表凍結、連一棵樹都長不出來的極寒世界裡，這些貼在地面上的微小綠色生命到底是什麼生產者呀？』", 
+                options: [
+                    "A. 這是一直被冰凍著的巨型針葉樹苗", 
+                    "B. 這是非常耐寒的地衣與蘚苔植物", 
+                    "C. 這是從熱帶飄過來的仙人掌種子", 
+                    "D. 智慧型游到陸地上來生活的浮游藻類"
+                ], 
+                ans: 1, 
+                reason: "根據課本134頁與圖4-24，凍原氣候極度寒冷。這裡「沒有高大的樹木」，主要的生產者是以能忍受極端低溫的「地衣與蘚苔植物」為主。牠們緊貼地面生長，避開強風與極寒！" 
+            },
+            {
+                title: "第二站(上)：🌲 針葉林生態系 - 環境特徵",
+                imgUrl: "images/taiga.jpg",
+                story: "探險車漸漸往南方移動，氣溫稍微回升了一點，但依然帶著陣陣寒意。\n阿綠開門下車，發現四周的景色變了：「哇！出現好多高聳的大樹，可是它們的葉子怎麼都長得像尖尖的針呢？」\n小藍：「我知道！這裡是由裸子植物構成的針葉林」\n珍妮博士笑著說：小藍說的沒錯，針葉林生態系...",
+                question: "💡 請選出針葉林生態系得【2個正確特徵卡牌】（點擊後可複選）：",
+                options: ["多雨但低溫", "冬季長且會下雪", "全年高溫多雨", "氣候極度乾燥", "四季溫暖分明", "終年佈滿冰雪"],
+                correctIndexes: [0, 1],
+                isMultipleCard: true,
+                videoUrl: "https://www.youtube.com/watch?v=8_in_W9ivtY",
+                videoText: "🦌 點我觀看駝鹿影片",
+                wrongMessage: "❌ 哎呀，這個特徵好像不屬於這裡喔！再仔細觀察一下這些高聳的針葉樹，重新選選看吧！",
+                reason: "珍妮博士說：「這裡的夏天雖溫暖，但動植物必須想辦法適應寒冬，例如熊會以冬眠的方式來度過食物減少的冬天，駝鹿、馴鹿等也是這裡常見的生物」"
+            },
+            {
+                title: "第二站(下)：🌲 針葉林生態系 - 生物特徵",
+                imgUrl: "images/taiga.jpg",
+                story: "看完了針葉林生物的精彩影片，小藍看著挺拔的林木陷入了沉思。",
+                question: "🤔 這時車子後方傳來樹枝被踩斷的巨大聲響！小藍緊張地大喊：『有東西在接近！體型好像很大！』這種寒冷的許多樹森林中，哪種動物最可能正躲在針葉林後看著他們？",
+                options: [
+                    "A. 習慣在乾旱沙漠中生活的魔蜥",
+                    "B. 擁有厚重毛皮、能在寒冷森林生存的馴鹿與棕熊",
+                    "C. 喜歡在非洲大草原奔跑的長頸鹿",
+                    "D. 依賴潮汐與豐富海水生存的招潮蟹"
+                ],
+                ans: 1,
+                reason: "針葉林生態系氣候寒冷，這片森林中有高大的松、杉等裸子植物，此地常見的代表性動物包含擁有厚重毛皮能禦寒的駝鹿、馴鹿、棕熊等哺乳類！"
+            },
+            {
+                title: "第三站(上)：🍂 落葉林生態系 - 氣候觀測",
+                imgUrl: "images/forest.jpg",
+                story: "探險車繼續前進，溫暖的陽光灑了進來。\n阿綠興奮地叫道：『看！這裡的樹葉有紅有黃，還一直掉落，鋪成一條彩色地毯！』",
+                question: "💡 請選出落葉林生態系得【2個正確特徵卡牌】（點擊後可複選）：",
+                options: ["四季分明", "樹木在秋冬會落葉", "終年高溫多雨", "植物以裸子植物為主"],
+                correctIndexes: [0, 1],
+                isMultipleCard: true,
+                videoUrl: "https://www.youtube.com/watch?v=iaH9PK-3Y0o",
+                videoText: "🍁 點我觀看四季落葉林絢麗景致影片",
+                wrongMessage: "❌ 方向不對喔！看看滿地的紅葉與黃葉，這代表這裡的季節變化非常明顯。再試一次吧！",
+                reason: "珍妮博士點點頭：『這裡的雨量更充沛了，而且現在正值秋天，樹木為了準備度過寒冷的冬天，會把葉子掉光以減少水分蒸散，這叫做落葉闊葉林。』"
+            },
+            {
+                title: "第三站(下)：🍂 四季落葉林生態系 - 生存之道",
+                imgUrl: "images/forest.jpg",
+                story: "踩在彩色地毯般柔軟的落葉上，小藍正看著遠方忙著搬運堅果的松鼠。",
+                question: "🤔 小藍『這些忙著搬堅果的小動物，在落葉林裡的生活有什麼特殊習性嗎?』",
+                options: [
+                    "A. 為了把壞掉的葉子淘汰，在冬天長出更美麗的紅花",
+                    "B. 牠們正在囤積食物，準備在冬天落葉寒冷時度過寒冬",
+                    "C. 為了把樹枝減重，防止太重被大風連根拔起",
+                    "D. 為了製造更多落葉肥料，讓土壤變得更肥沃"
+                ],
+                ans: 1,
+                reason: "溫帶落葉林四季分明，秋冬季節來臨時氣溫下降、雨量減少。動物為了度過寒冬會事先囤積食物，或是像候鳥會遷徙至溫暖的地方度冬！"
+            },
+            {
+                title: "第四站(上)：🌴 熱帶雨林生態系 - 叢林探索",
+                imgUrl: "images/rainforest.jpg",
+                story: "轟隆隆！探險車開進了赤道區域，天空正下著滂沱大雨，車內顯示外面又熱又濕。\n阿綠擦擦玻璃的霧氣：『這裡的樹木高到看不見天頂，層層疊疊的！』\n珍妮博士讚嘆道：『我們來到了熱帶雨林。這裡的環境...』",
+                question: "💡 請選出最符合熱帶雨林生態系得【3個正確環境卡牌】（點擊後可複選）：",
+                options: ["高溫多雨", "雨量充沛", "光照時間長", "日夜溫差極大", "冬季長且會下雪", "年雨量不固定且氣候乾燥"],
+                correctIndexes: [0, 1, 2],
+                isMultipleCard: true,
+                videoUrl: "https://www.youtube.com/watch?v=OTRVNeOeA4s",
+                videoText: "🐒 點我觀看熱帶雨林豐富物種影片",
+                wrongMessage: "❌ 不對喔！探險車儀表板顯示外面『又熱又濕』還下著大雨。再重新挑選適合熱帶雨林的卡牌吧！",
+                reason: "珍妮博士接著說：「充足的水分、溫度與陽光，讓它成為地球上生物多樣性最豐富的寶庫！」"
+            },
+            {
+                title: "第四站(下)：🌴 熱帶雨林生態系 - 垂直結構",
+                imgUrl: "images/rainforest.jpg",
+                story: "聽著林間無數昆蟲與鳥類的鳴叫，雨林的生機讓人震撼。",
+                question: "🤔 小藍看著車外濃密的巨大樹冠層：『這裡植物長得太茂密了吧，陽光都快照不進來了。』為什麼會這樣呢？",
+                options: [
+                    "A. 樹木會吸收所有白光",
+                    "B. 森林底層的土壤有毒，會產生有毒蒸氣覆蓋陽光",
+                    "C. 樹木為了爭取陽光，普遍演化得非常高大直挺且葉片寬大",
+                    "D. 這裡本來日照時間就比黑夜短"
+                ],
+                ans: 2,
+                reason: "熱帶雨林因為雨水充足、陽光強烈，植物多具有「寬大的闊葉」以最大化行光合作用；「針狀葉」是乾燥或寒冷環境（如針葉林）生物的特徵！"
+            },
+            {
+                title: "第五站(上)：🌾 草原生態系 - 能量金字塔",
+                imgUrl: "images/savanna.jpg",
+                story: "探險車開進了一片無邊無際的草海。\n阿綠：「哇！視野突然變開闊了！為什麼羚羊和斑馬的數量那麼多，可是獅子好像只有一、兩群呢？」\n珍妮博士：「這是我們學過的概念喔，因為...」",
+                question: "💡 請從下方下拉選單選出最正確的科學原因：",
+                options: [
+                    " because_breeding (選我不是正確答案)",
+                    "能量會隨食物鏈傳遞而散失，愈高級的消費者總能量與少",
+                    "因為草食性動物體型通常比較大，需要比較多的生存空間",
+                    "因為獅子喜歡獨來獨往，不喜歡與其他同伴聚集"
+                ],
+                isDropdownQuiz: true,
+                dropdownCorrectIndex: 1,
+                videoUrl: "https://www.youtube.com/watch?v=uAk-zFxv7Ws",
+                videoText: "🦁 點我觀看長頸鹿影片",
+                wrongMessage: "❌ 不對喔！想想我們學過的『能量金字塔』。越到金字塔頂端，能分到的能量就越少，所以高級消費者數量少。再選一次吧！",
+                reason: "珍妮博士繼續說：「草原雖然有雨季，但這裡的年雨量（約250~750毫米）不太夠讓樹木生長成森林。」博士指著遠方：「這就是乾濕季分明的草原。」"
+            },
+            {
+                title: "第五站(下)：🌾 草原生態系 - 生存策略",
+                imgUrl: "images/savanna.jpg",
+                story: "熱帶草海風吹草低，成群的斑馬正在警惕著四周。",
+                question: "🤔 小藍：這裡視野這麼遼闊，獅子一看就知道哪裡有獵物，草食性動物要怎麼降低被掠時的危險啊？",
+                options: [
+                    "A. 演化出極佳的奔跑速度與群居生活互相提防外敵",
+                    "B. 身上演化出鮮豔奪目的斑紋，嚇退靠近的獅子",
+                    "C. 挖出極深的地下隧道，整天躲在土裡不出來",
+                    "D. 將身體體色隨環境變成翠綠色隱身在草叢中"
+                ],
+                ans: 0,
+                reason: "在缺乏樹木遮蔽、視野開闊的草原生態系中，草食性動物通常演化出敏銳的感官（視覺、聽覺）與「快速奔跑的能力」，並常以「群居生活」來共同防禦外敵！"
+            },
+            {
+                title: "第六站(上)：🌵 沙漠生態系 - 荒漠氣候",
+                imgUrl: "images/desert.jpg",
+                story: "探險車來到了最後一站─漫天沙塵的荒漠。大家下車後，改成騎乘駱駝。\n阿綠：「沙漠真的好熱喔...沒有樹可以遮陽，也很少看到生物，地球上居然有這樣的地方」\n珍妮博士：「沙漠是陸域環境中...」",
+                question: "💡 請選出最符合沙漠環境特徵的【3個正確卡牌】（點擊後可複選）：",
+                options: ["年雨量最少", "日夜溫差大", "氣候乾燥", "終年高溫多雨", "降雨量充沛且均勻", "四季分明且秋冬落葉"],
+                correctIndexes: [0, 1, 2],
+                isMultipleCard: true,
+                wrongMessage: "❌ 不對喔！這裡滿地都是沙子而且熱得要命，水資源非常珍貴。再想想沙漠最顯著的三個氣候特點吧！",
+                videoUrl: "https://www.youtube.com/watch?v=FCrl_QqPKz8&list=PLXB1nfq4ZSLmwpN8pf6Ldnz3An-xlDbhd&index=57",
+                videoText: "🦁 點我觀看跳鼠影片",
+                reason: "珍妮博士接著說：「...的地方，在這裡生存，沒有特殊的本事可是活不下去的。另外像是跳鼠有大耳朵可以增加散熱；蜥蜴會避開最炎熱的中午，利用早晨和傍晚出沒，動物們都有自己的一套方式努力生存呢！」"
+            },
+            {
+                title: "第六站(下)：🌵 沙漠生態系 - 生物特殊構造",
+                imgUrl: "images/desert.jpg",
+                story: "駱駝步伐緩慢，在滾燙的沙丘上留下腳印。",
+                question: "🤔 小藍：「啊！這植物怎麼這麼刺！動物們則又熱又渴的，我來觀察看看他們怎麼生存下來的」請幫小藍找出【不可能】出現的狀況",
+                options: [
+                    "A. 仙人掌葉片退化成針，可減少水分散失還可禦敵",
+                    "B. 跳鼠會大量流汗和排尿來降低體溫",
+                    "C. 蜥蜴會挑早晨或傍晚出沒，避開炎熱的正午",
+                    "D. 駱駝以駝峰儲存脂肪，並可將脂肪轉換為水分"
+                ],
+                ans: 1,
+                reason: "跳鼠身為沙漠動物，最需要的就是「保存水分」。牠們排尿極少（濃度高），且不會透過大量流汗來散熱，因為流汗會使水分迅速耗盡而脫水死亡！"
+            }
         ],
         water: [
-            { title: "第一站：💧 湍急淡水生態系", imgUrl: "images/stream.jpg", story: "博士將探險艇啟動，第一站來到了清澈的高山溪流。小綠看著窗外湍急的水流：『哇！水流好急！』", question: "在這種水流湍急、陽光不足的溪流「上游」，最主要的能量基礎是什麼？", options: ["A. 岸邊高大樹木落入水中的枯枝落葉", "B. 水中大量生長的巨型海帶", "C. 珊瑚礁產生的底棲有機物", "D. 釋放特殊化學物質來發電"], ans: 0, reason: "溪流上游主要能量來源是『岸邊植物掉入水中的枯枝落葉』。" },
-            { title: "第二站：🦀 變幻河口生態系", imgUrl: "images/mangrove.jpg", story: "探險艇開到了河海交會口。阿傑皺著眉頭：『這裡的水混濁多了，而且一下子鹹一下子淡。』", question: "阿傑好奇地問：『既然環境這麼糟糕，為什麼這裡的生物「數量」反而這麼龐大啊？』", options: ["A. 這裡水溫終年固定在零度左右", "B. 這裡完全沒有任何掠食者", "C. 上游河流帶來了極其豐富的營養鹽", "D. 因為紅樹林會自動製造淡水"], ans: 2, reason: "河口生態系因為『河流上游帶來了豐富的營養鹽』，食物充足，使適應環境的生物數量非常龐大。" },
-            { title: "第三站：🐚 韻律潮間帶生態系", imgUrl: "images/intertidal.jpg", story: "海水慢慢退去，露出了大片岩石。小綠發現石頭上長滿了白色的藤壺。", question: "這些生物必須忍受漲潮被淹、退潮曝曬的考驗。牠們通常有哪些適應特徵？", options: ["A. 具有外殼或能分泌黏液防止水分散失", "B. 骨骼內部完全中空可以隨風飄浮", "C. 退潮時游回深海吃浮游植物", "D. 能在極度缺水的環境下長出針狀葉"], ans: 0, reason: "潮間帶生物通常具備堅硬的外殼、能緊緊附著在岩石上，或在退潮時閉殼並分泌黏液以防曬防脫水。" }
+            {
+                title: "🎒 水域探險：行前說明會",
+                imgUrl: "images/water_intro.png",
+                story: "珍妮博士：有人知道水域環境可以依據含鹽量，分成哪些不同的生態系？",
+                question: "💡 請選出決定水域生態系類型的【3個正確生態系】（點擊後可複選）：",
+                options: ["淡水生態系", "河口生態系", "海洋生態系", "沼澤生態系", "潮間帶生態系", "深海生態系"],
+                correctIndexes: [0, 1, 2],
+                isMultipleCard: true,
+                wrongMessage: "❌ 選項不對喔！有些不是最基礎的三大分類，請對照課本再試一次！",
+                reason: "珍妮博士：沒錯！就是淡水、河口和海洋，不同條件會決定不同的生產者的類型，進而影響消費者的種類。準備好了嗎?讓我們搭乘時空探險車出發囉！"
+            },
+            {
+                title: "第一站(上)：💧 淡水生態系 - 環境觀測",
+                imgUrl: "images/stream.jpg",
+                story: "珍妮博士將探險艇啟動，第一站來到了清澈的高山溪流。博士和阿綠在湖泊上划著船，享受大自然的蛙鳴鳥叫。珍妮博士說：「淡水生態系，依照水流速度，可以分成…」",
+                question: "💡 請選出淡水生態系的【2個正確分類卡牌】（點擊後可複選）：",
+                options: ["溪流、河川", "池塘、湖泊", "河口、潮間帶", "淺海、大洋區"],
+                correctIndexes: [0, 1],
+                isMultipleCard: true,
+                videoUrl: "https://youtu.be/PDu3R3YXglE?si=FwCen9UBdGmJMva6",
+                videoText: "🐟 點我觀看臺灣國寶：櫻花勾吻鮭影片",
+                wrongMessage: "❌ 哎呀，這個分類好像不屬於淡水環境喔！再仔細看一看珍妮博士提到的水流速度分類吧！",
+                reason: "珍妮博士接著說：「所以屬於流動水域的溪流河川，生產者多位為兩岸的枯枝落葉；而屬於靜止水域的池塘湖泊，可以有大型水生植物，也有浮游藻類漂浮在水面。」\n阿綠說：「我記得！我們之前觀察水中小生物，就有在池塘中撈到一些綠藻，要用顯微鏡才看得到呢！」"
+            },
+            {
+                title: "第一站(下)：💧 淡水生態系 - 逆流而上",
+                imgUrl: "images/stream.jpg",
+                story: "看完了美麗的櫻花勾吻鮭影片，清澈的水流不斷拍打著岸邊岩石。",
+                question: "🤔 小藍：「哎呀，這裡的石頭好滑，水流好湍急，動物們不會被水沖走嗎？」",
+                options: [
+                    "A. 小動物會躲在石縫間，或是魚類身體成流線型",
+                    "B. 被沖下去就算了",
+                    "C. 水流很大的時候全部爬上岸，等水小了再回到水裡就好"
+                ],
+                ans: 0,
+                reason: "流動水域（溪流河川）的水流湍急且含氧量高，這裡的魚類體型多呈流線型以減少阻力，水生昆蟲則演化出扁平的身體或吸盤，或習慣躲在石縫、攀附在石頭上以防被水沖走！"
+            },
+            {
+                title: "第二站(上)：🦀 河口生態系 - 交匯與衝擊",
+                imgUrl: "images/estuary.jpg",
+                story: "探險車順著溪流往下航行，來到了河海交界的河口生態系。小藍：「哇，這裡的招潮蟹太多了吧！密密麻麻的，彈塗魚也是好多好多」珍妮博士：「開河口生態系位於河流的終點，河川裡的物質，全都都流到這裡累積，海水也會被沖進來，因此河口生態系…」",
+                question: "💡 請選出符合河口生態系環境的【3個正確特徵卡牌】（點擊後可複選）：",
+                options: ["養分豐富", "含鹽量變化大", "水溫變化大", "鹽度恆定不變", "極度缺乏有機物"],
+                correctIndexes: [0, 1, 2],
+                isMultipleCard: true,
+                videoUrl: "https://drive.google.com/file/d/1jckTw7SRP9g35B3nrrLSnrVWLioGHrrN/view?usp=drivesdk",
+                videoText: "🐟 點我觀看珍貴彈塗魚影片",
+                wrongMessage: "❌ 特徵組合不完全符合喔！這裡是河海交界，環境變化非常劇烈。再試一次！",
+                reason: "珍妮博士繼續說道：「環境雖惡劣，只要能適應這樣的環境，養分、資源就都是你的，因此單一物種的數量就可以很龐大」"
+            },
+            {
+                title: "第二站(下)：🦀 河口生態系 - 生存紀錄簿",
+                imgUrl: "images/estuary.jpg",
+                story: "看完了奇妙的彈塗魚生態影片，岸邊的紅樹林正隨風搖曳。",
+                question: "🤔 阿綠：「河口環境太酷了，我要來紀錄這裡的生物如何生存！」請幫阿綠找出【寫錯】的紀錄：",
+                options: [
+                    "A. 水筆仔有胎生苗，讓種子在樹上先發芽增加存活機率",
+                    "B. 彈塗魚可以暫離水面，適應水量的變化",
+                    "C. 植物先被分解成碎屑，招潮蟹再撿來吃",
+                    "D. 河口的食物不好吃，所以這裡沒有鳥類"
+                ],
+                ans: 3,
+                reason: "河口生態系因養分極為豐富，吸引了大量的招潮蟹、彈塗魚及貝類在此繁殖，進而吸引了多種候魚與水鳥前來覓食（如著名的黑面琵鷺），因此它是鳥類非常重要的棲地與覓食天堂，D選項是完全寫錯的喔！"
+            },
+            {
+                title: "第三站：🌊 海洋生態系說明會 - 領域分界",
+                imgUrl: "images/ocean_intro.png",
+                story: "探險車來到了海邊，珍妮博士、阿綠和小藍下了車。珍妮博士將探險車做了一些設定後，帶著阿綠和小藍走到旁邊。珍妮博士：「海洋生態系可以依照離岸邊的距離，分成由近到遠的…」",
+                question: "💡 請從下方下拉選單選出【由近到遠】最正確的海洋環境順序：",
+                options: [
+                    " placeholder (選我不是正確答案)",
+                    "潮間帶＞淺海區＞大洋區",
+                    "淺海區＞大洋區＞潮間帶",
+                    "大洋區＞潮間帶＞淺海區"
+                ],
+                isDropdownQuiz: true,
+                dropdownCorrectIndex: 1,
+                wrongMessage: "❌ 順序顛倒或不正確喔！由近到遠、從踏得到海浪的地方開始，請再重新選擇一次！",
+                reason: "阿綠：「所以我們接下來要潛水了嗎？」\n小藍：「好期待啊！」\n珍妮博士：「探險車潛海模式還在準備中，我們先來逛逛潮間帶吧！」"
+            },
+            {
+                title: "第四站(上)：🐚 潮間帶生態系 - 潮汐大考驗",
+                imgUrl: "images/intertidal.jpg",
+                story: "珍妮博士：「潮間帶是海邊漲潮～退潮之間的區域，因此這裡的生物需有…」",
+                question: "💡 請選出最符合潮間帶生物適應特徵的【3個正確卡牌】（點擊後可複選）：",
+                options: ["抵抗潮汐變化", "忍受海浪擊打", "時而泡水時而曝曬", "利用脂肪轉化水分", "退化出針狀葉", "擁有厚重皮毛"],
+                correctIndexes: [0, 1, 2],
+                isMultipleCard: true,
+                videoUrl: "https://youtu.be/WIPV1iwzrzg?si=LYsLd7UaMNwJDFyF",
+                videoText: "🐦 點我觀看超療癒迪士尼短片《鷸 Piper》",
+                wrongMessage: "❌ 觀測卡牌不對喔！這裡每天都要經歷兩次漲退潮的劇烈環境波動。請重新思考看看！",
+                reason: "阿綠：「所以螃蟹才會躲在石頭縫裡，而海星可以用管足緊緊的貼在礁石上！」\n珍妮博士：「阿綠你的觀察力很好呢！」"
+            },
+            {
+                title: "第四站(下)：🐚 潮間帶生態系 - 沙灘下的祕密",
+                imgUrl: "images/intertidal.jpg",
+                story: "欣賞完海灘上小鷸鳥覓食的可愛影片後，大家在沙灘與岩礁間仔細翻找。",
+                question: "🤔 小藍：「嘿咻，蛤蜊怎麼藏這麼深，這麼難挖啊？」關於潮間帶貝類的構造與生存方式，以下敘述何者最正確？",
+                options: [
+                    "A. 蛤蜊鑽入沙中或利用堅硬外殼，可以防止退潮時烈日曝曬而散失水分與躲避天敵",
+                    "B. 牠們藏在沙裡是為了長出翅膀",
+                    "C. 牠們利用厚重的羽毛在沙灘下禦寒",
+                    "D. 牠們緊貼岩石是為了吸收岩石排出的有毒蒸氣"
+                ],
+                ans: 0,
+                reason: "潮間帶的生物（如蛤蜊、藤壺等）必須面對退潮後強烈陽光的曝曬與乾燥，蛤蜊鑽入潮濕的沙土深處或貝類擁有堅硬的外殼緊閉，皆能有效「保持水分、避免乾燥」並躲避天敵的捕食！"
+            },
+            {
+                title: "第五站(上)：🐠 淺海區生態系 - 水下熱帶雨林",
+                imgUrl: "images/coral_reef.jpg",
+                story: "珍妮博士、阿綠和小藍換上潛水裝備，往珊瑚礁的方向游去。五彩繽紛的珊瑚，形成高高低低、充滿洞穴的礁石，色澤鮮豔的各種熱帶魚，在礁石間來回穿梭，陽光灑下來，形成明亮閃爍的光斑，真是美不勝收。珍妮博士：「淺海區的環境...」",
+                question: "💡 請選出最符合淺海區環境特徵的【3個正確卡牌】（點擊後可複選）：",
+                options: ["深度在200公尺以內", "包含大陸棚(陸地的延伸)", "從海面到海底都有光線", "水深在1000公尺以上", "終年漆黑毫無陽光", "主要由仙人掌構成"],
+                correctIndexes: [0, 1, 2],
+                isMultipleCard: true,
+                videoUrl: "https://www.youtube.com/watch?v=UFAGa4M9ZOc",
+                videoText: "🪸 點我觀看海底璀璨珊瑚世界影片",
+                wrongMessage: "❌ 數據或環境觀測錯誤！淺海區是陸地向外延伸的陽光充沛區域。請對照課本再試一次！",
+                reason: "小藍：「連海底都有光！那麼不只漂浮於水中的浮游藻類，連固著於地面的昆布、紅藻等大型藻類也可以在這裡生長囉！生產者的數量、種類多，所以消費者的數量就會跟著多~啊！我的腳！被巨藻纏住了...」"
+            },
+            {
+                title: "第五站(下)：🐠 淺海區生態系 - 珊瑚礁的生命力",
+                imgUrl: "images/coral_reef.jpg",
+                story: "看完了美麗的珊瑚礁影片，大家一邊幫小藍從巨藻中脫困，一邊欣賞四周的生態。",
+                question: "🤔 珍妮博士問：『在剛剛看過的珊瑚礁中，珊瑚蟲與其體內的共生藻關係密不可分。請問以下關於珊瑚礁生態系的敘述何者正確？』",
+                options: [
+                    "A. 珊瑚蟲提供共生藻庇護所，而共生藻行光合作用提供珊瑚蟲養分",
+                    "B. 珊瑚礁區水太混濁，所有魚類都看不見路",
+                    "C. 珊瑚蟲會主動游到深海把大白鯊吃掉",
+                    "D. 珊瑚礁因為陽光照不到，所以生物種類非常稀少"
+                ],
+                ans: 0,
+                reason: "珊瑚礁被稱為「海洋中的熱帶雨林」。生活在淺海的珊瑚蟲與體內的「共生藻」是互利共生關係，共生藻利用充足的陽光進行光合作用，並將養分分享給珊瑚蟲，而珊瑚蟲則造礁形成無數孔隙，成為眾多生物的棲息天堂！"
+            },
+            {
+                title: "第六站(上)：🌊 大洋區透光層 - 蔚藍大洋",
+                imgUrl: "images/pelagic_sun.jpg",
+                story: "探險號離岸邊愈來愈遠，水也愈來愈深...珍妮博士：「當水深超過200公尺，就屬於大洋區，因陽光的穿透力有限，所以大洋區又可以分成上層的透光層，和下層的深海層。」阿綠：「水這麼深，生產者就沒有辦法固著於地面生長了。」珍妮博士：「沒錯，這裡的生產者就以浮游藻類為主，而消費者則有…」",
+                question: "💡 請選出悠游在大洋當中的【3個正確大型動物卡牌】（點擊後可複選）：",
+                options: ["鯊魚", "鯨豚", "翻車魚", "招潮蟹", "水筆仔", "地衣"],
+                correctIndexes: [0, 1, 2],
+                isMultipleCard: true,
+                videoUrl: "https://www.youtube.com/watch?v=9BGAmCXonvI&t=22s",
+                videoText: "🐟 點我觀看震撼的沙丁魚風暴影片",
+                wrongMessage: "❌ 哎呀，你選到了一些只能在岸邊、河口或陸地上生活的生物喔！這裡可是廣闊無邊的大洋透光層，請重新選取吧！",
+                reason: "珍妮博士繼續說：「...等大型動物，悠游在大洋當中。」"
+            },
+            {
+                title: "第六站(下)：🌊 大洋區透光層 - 汪洋中的食物鏈",
+                imgUrl: "images/pelagic_sun.jpg",
+                story: "剛剛影片中成千上萬的沙丁魚組成巨大魚球防禦掠食者的畫面，讓大家驚嘆不已。",
+                question: "🤔 珍妮博士問：『在廣闊且缺乏固定攀附物的大洋區透光層中，整個食物鏈（能量金字塔）的最底層基礎生產者是誰？』",
+                options: [
+                    "A. 隨波飄流且能利用陽光行光合作用的微小浮游藻類",
+                    "B. 長在深不見底海底的巨大熱帶雨林植物",
+                    "C. 從河口被水沖過來的水筆仔枯枝落葉",
+                    "D. 完全不需要生產者，這裡的魚類全部都靠吃沙子維生"
+                ],
+                ans: 0,
+                reason: "大洋區透光層（水深200公尺內）缺乏固著物，所以大型藻類無法在海底扎根。這裡最核心的生產者是「微小的浮游藻類」，牠們數量極其龐大，飄浮在水面行光合作用，支撐起整片汪洋大洋的食物網基礎！"
+            },
+            {
+                title: "第七站(上)：🌌 大洋區深海層 - 黑暗極境",
+                imgUrl: "images/deep_sea.jpg",
+                story: "阿綠：「深海好黑喔....(開燈)哇！這裡的魚長得也太奇怪了吧！」珍妮博士：「深海區為海洋下層光線無法到達的地方，因此缺乏行光合作用的生產者，消費者的食物來源為屍體碎片，又稱為海洋雪。」",
+                question: "🤔 珍妮博士：『在完全沒有陽光、不具備光合作用生產者的深海中，有些深海魚類的眼睛退化，有些則演化出特殊的生存本領。請問以下哪一項是深海動物常見的特徵？』",
+                options: [
+                    "A. 許多生物演化出具備發光器（如鮟鱇魚），可用來誘捕獵物或吸引配偶",
+                    "B. 身上長出大量鮮艷的綠色葉片以進行光合作用",
+                    "C. 每天晚上要游回陸地上曬太陽，白天再沉下來",
+                    "D. 演化出寬大的樹冠層來爭取陽光"
+                ],
+                ans: 0,
+                reason: "深海層終年漆黑、寒冷且高壓。許多深海生物（例如鮟鱇魚）演化出特殊的發光器，在伸手不見五指的黑暗世界中用來引誘具有趨光性的獵物或是吸引配偶，而這裡的能量基礎則主要仰賴上層水域掉落下來的有機碎屑（海洋雪）！"
+            }
         ]
     };
 
-    window.choosePath = function(path) {
-        document.getElementById('path-section').classList.add('hidden');
-        document.getElementById('game-section').classList.remove('hidden');
-        document.getElementById('game-footer').classList.remove('hidden');
-        initGame(path);
+    // 陸域分組卡牌定義
+    const landGroups = [
+        {
+            title: "第一階段任務：🌧️ 歸類【年雨量氣候指標】卡牌",
+            items: [
+                { id: "g1_1", text: "年雨量極少且氣溫極低", target: "tundra" },
+                { id: "g1_2", text: "年雨量少於250mm", target: "desert" },
+                { id: "g1_3", text: "年雨量750mm以上、氣溫較低", target: "needle" },
+                { id: "g1_4", text: "年雨量750mm以上、四季分明", target: "broad" },
+                { id: "g1_5", text: "年雨量超過2000mm", target: "rainforest" },
+                { id: "g1_6", text: "年雨量介於250~750mm", target: "grass" }
+            ]
+        },
+        {
+            title: "第二階段任務：🌤️ 歸類【詳細氣候特徵】卡牌",
+            items: [
+                { id: "g2_1", text: "終年低溫少雨", target: "tundra" },
+                { id: "g2_2", text: "晝夜溫差大", target: "desert" },
+                { id: "g2_3", text: "冬季會下雪所以多針葉樹", target: "needle" },
+                { id: "g2_4", text: "四季分明所以秋冬會落葉", target: "broad" },
+                { id: "g2_5", text: "溫暖潮濕且多雨", target: "rainforest" },
+                { id: "g2_6", text: "乾溼季分明", target: "grass" }
+            ]
+        },
+        {
+            title: "第三階段任務：🌿 歸類【關鍵生產者】卡牌",
+            items: [
+                { id: "g3_1", text: "地衣和蘚苔", target: "tundra" },
+                { id: "g3_2", text: "仙人掌與耐旱植物", target: "desert" },
+                { id: "g3_3", text: "裸子植物為主的針葉林", target: "needle" },
+                { id: "g3_4", text: "秋冬會落葉的樹，例如楓樹", target: "broad" },
+                { id: "g3_5", text: "高大喬木與藤蔓", target: "rainforest" },
+                { id: "g3_6", text: "草、草、草、樹", target: "grass" }
+            ]
+        },
+        {
+            title: "第四階段任務：🐾 歸類【代表性動物】卡牌",
+            items: [
+                { id: "g4_1", text: "北極熊與雪兔", target: "tundra" },
+                { id: "g4_2", text: "駱駝、蠍子、跳鼠", target: "desert" },
+                { id: "g4_3", text: "馴鹿與棕熊", target: "needle" },
+                { id: "g4_4", text: "浣熊和赤狐", target: "broad" },
+                { id: "g4_5", text: "巨嘴鳥、樹懶、鮮豔昆蟲", target: "rainforest" },
+                { id: "g4_6", text: "長頸鹿和狐蒙", target: "grass" },
+                { id: "g4_7", text: "獅子和鬣狗", target: "grass" }
+            ]
+        }
+    ];
+
+    // 水域全新分組卡牌定義 (同步對照課本內容修改)
+    const waterGroups = [
+        {
+            title: "第一階段任務：🌐 歸類【基礎水域生態系分類】卡牌",
+            items: [
+                { id: "w1_1", text: "包含溪流、河川、湖泊、池塘", target: "stream" },
+                { id: "w1_2", text: "位於河流與海洋交會處", target: "estuary" },
+                { id: "w1_3", text: "每天漲潮退潮之間的特殊區域", target: "intertidal" },
+                { id: "w1_4", text: "水深200公尺以內大陸棚珊瑚群聚區", target: "coral" },
+                { id: "w1_5", text: "水深超過200公尺且陽光充足的上層水域", target: "ocean_sun" },
+                { id: "w1_6", text: "水深超過200公尺、光線難以到達的下層", target: "ocean_deep" }
+            ]
+        },
+        {
+            title: "第二階段任務：🌊 歸類【詳細水域特徵與環境衝擊】卡牌",
+            items: [
+                { id: "w2_1", text: "高山溪流水流湍急且含氧量高", target: "stream" },
+                { id: "w2_2", text: "養分豐富但鹽度與水溫變化劇烈", target: "estuary" },
+                { id: "w2_3", text: "生物必須時而泡水、時而陽光曝曬", target: "intertidal" },
+                { id: "w2_4", text: "陽光充沛且地形高低充滿洞穴", target: "coral" },
+                { id: "w2_5", text: "廣闊汪洋上層、缺乏固定攀附物", target: "ocean_sun" },
+                { id: "w2_6", text: "終年漆黑、寒冷且承受極高水壓", target: "ocean_deep" }
+            ]
+        },
+        {
+            title: "第三階段任務：🌿 歸類【核心生產者來源】卡牌",
+            items: [
+                { id: "w3_1", text: "兩岸掉落的枯枝落葉與附著藻類", target: "stream" },
+                { id: "w3_2", text: "紅樹林植物（如水筆仔）與浮游藻類", target: "estuary" },
+                { id: "w3_3", text: "石蓴、石花菜等固著性大型藻類", target: "intertidal" },
+                { id: "w3_4", text: "珊瑚蟲體內提供養分的共生藻", target: "coral" },
+                { id: "w3_5", text: "隨波飄流、數量龐大的微小浮游藻類", target: "ocean_sun" },
+                { id: "w3_6", text: "完全缺乏能行光合作用的生產者", target: "ocean_deep" }
+            ]
+        },
+        {
+            title: "第四階段任務：🐟 歸類【代表性水中消費者】卡牌",
+            items: [
+                { id: "w4_1", text: "櫻花勾吻鮭、水生昆蟲、翠鳥", target: "stream" },
+                { id: "w4_2", text: "招潮蟹、彈塗魚、黑面琵鷺", target: "estuary" },
+                { id: "w4_3", text: "海星、寄居蟹、藤壺、牡蠣", target: "intertidal" },
+                { id: "w4_4", text: "小丑魚、獅子魚、綠蠵龜、海馬", target: "coral" },
+                { id: "w4_5", text: "鯊魚、鮪魚、鯨豚、翻車魚、磷蝦", target: "ocean_sun" },
+                { id: "w4_6", text: "發光烏賊、鮟鱇魚（依賴海洋雪為食）", target: "ocean_deep" }
+            ]
+        }
+    ];
+
+    const reviewEcosystems = [
+        { key: "tundra", title: "❄️ 凍原生態系" },
+        { key: "desert", title: "🌵 沙漠生態系" },
+        { key: "needle", title: "🌲 針葉林生態系" },
+        { key: "broad", title: "🍂 落葉林生態系" },
+        { key: "rainforest", title: "🌴 熱帶雨林系" },
+        { key: "grass", title: "🌾 草原生態系" },
+        
+        { key: "stream", title: "💧 淡水溪流/河川" },
+        { key: "estuary", title: "🦀 河口生態系" },
+        { key: "intertidal", title: "🐚 海洋潮間帶" },
+        { key: "coral", title: "🐠 珊瑚礁區(淺海)" },
+        { key: "ocean_sun", title: "🌊 大洋透光層" },
+        { key: "ocean_deep", title: "🌌 大洋深海層" }
+    ];
+
+    let currentPath = ""; 
+    let currentStageIndex = 0; 
+    let isPathCompleted = { land: false, water: false };
+    let pathScores = { land: 0, water: 0 };
+    let hasDeductedForCurrentQuiz = false;
+    let currentQuizScoreMax = 10;
+
+    let selectedCustomIndexes = []; 
+
+    // 分組專用變數
+    let currentLandGroupIndex = 0; 
+    let landGroupPlacedCount = 0;
+    
+    let currentWaterGroupIndex = 0;
+    let waterGroupPlacedCount = 0;
+
+    window.onload = function() {
+        const imgElement = document.getElementById('scene-img');
+        imgElement.onerror = function() {
+            if (this.src.endsWith('.jpg')) {
+                this.src = this.src.replace('.jpg', '.png');
+            } else if (this.src.endsWith('.png')) {
+                this.src = this.src.replace('.png', '.jpg');
+            }
+        };
+        showSection('login-section');
     };
 
-    let currentPath = "";
-    let currentQuizIndex = 0;
-    
-    function initGame(path) { currentPath = path; currentQuizIndex = 0; showQuiz(); }
+    function showSection(id) {
+        document.getElementById('login-section').classList.add('hidden');
+        document.getElementById('path-section').classList.add('hidden');
+        document.getElementById('game-section').classList.add('hidden');
+        document.getElementById('review-section').classList.add('hidden');
+        document.getElementById('result-section').classList.add('hidden');
+        document.getElementById('teacher-section').classList.add('hidden');
+        document.getElementById('game-footer').classList.add('hidden');
+        
+        document.getElementById(id).classList.remove('hidden');
+        if(id === 'game-section') {
+            document.getElementById('game-footer').classList.remove('hidden');
+        }
+    }
 
-    function showQuiz() {
-        const quiz = allQuizzes[currentPath][currentQuizIndex];
+    document.getElementById('start-btn').onclick = function() {
+        const cls = document.getElementById('class-select').value;
+        const p1s = document.getElementById('p1-seat').value.trim();
+        const p1n = document.getElementById('p1-name').value.trim();
+        
+        if(!cls) { alert("⚠️ 請選擇班級！"); return; }
+        if(!p1s || !p1n) { alert("⚠️ 請輸入座號與姓名！"); return; }
+        if(isDoubleMode) {
+            const p2s = document.getElementById('p2-seat').value.trim();
+            const p2n = document.getElementById('p2-name').value.trim();
+            if(!p2s || !p2n) { alert("⚠️ 請輸入隊員二的座號與姓名！"); return; }
+        }
+        
+        currentClassSelectValue = cls;
+        inputP1Seat = p1s;
+        inputP1Name = p1n;
+        
+        let displayUser = `${cls}班 ${p1s}號 ${p1n}`;
+        if(isDoubleMode) {
+            displayUser += ` & ${document.getElementById('p2-seat').value}號 ${document.getElementById('p2-name').value.trim()}`;
+        }
+        document.getElementById('welcome-msg').innerText = `🛸 探險通訊連線成功！\n👋 你好，${displayUser} 隊員！`;
+        
+        showSection('path-section');
+    };
+
+    window.choosePath = function(path) {
+        if(isPathCompleted[path]) return;
+        currentPath = path;
+        currentStageIndex = 0;
+        showSection('game-section');
+        loadCurrentQuiz();
+    };
+
+    function loadCurrentQuiz() {
+        const quiz = allQuizzes[currentPath][currentStageIndex];
+        hasDeductedForCurrentQuiz = false;
+        currentQuizScoreMax = 10;
+        
+        document.getElementById('feedback-area').classList.add('hidden');
+        document.getElementById('next-btn').classList.add('hidden');
+        
         document.getElementById('scene-title').innerText = quiz.title;
         document.getElementById('scene-img').src = quiz.imgUrl;
         document.getElementById('story-content').innerText = quiz.story;
         document.getElementById('question-content').innerText = quiz.question;
-        document.getElementById('progress').style.width = ((currentQuizIndex + 1) / allQuizzes[currentPath].length * 100) + "%";
-        document.getElementById('page-info').innerText = "探險進度 " + (currentQuizIndex + 1) + " / " + allQuizzes[currentPath].length;
         
         const container = document.getElementById('options-container');
         container.innerHTML = "";
-        document.getElementById('feedback-area').classList.add('hidden');
-        document.getElementById('next-btn').classList.add('hidden');
+        
+        if (quiz.isMultipleCard) {
+            selectedCustomIndexes = []; 
+            let randomizedOptions = quiz.options.map((opt, originalIdx) => {
+                return { text: opt, isCorrect: quiz.correctIndexes.includes(originalIdx) };
+            });
+            randomizedOptions.sort(() => Math.random() - 0.5);
 
-        quiz.options.forEach((opt, idx) => {
-            const btn = document.createElement('button');
-            btn.className = "option-btn"; btn.innerText = opt;
-            btn.onclick = () => checkAnswer(idx, btn);
-            container.appendChild(btn);
-        });
+            randomizedOptions.forEach((optObj) => {
+                const btn = document.createElement('button');
+                btn.className = "option-btn";
+                btn.innerText = optObj.text;
+                
+                btn.onclick = () => {
+                    if (btn.classList.contains('selected-correct')) {
+                        btn.classList.remove('selected-correct');
+                        selectedCustomIndexes = selectedCustomIndexes.filter(item => item.text !== optObj.text);
+                    } else {
+                        btn.classList.add('selected-correct');
+                        selectedCustomIndexes.push(optObj);
+                    }
+                    
+                    if (selectedCustomIndexes.length === quiz.correctIndexes.length) {
+                        const isAllCorrect = selectedCustomIndexes.every(item => item.isCorrect);
+                        const feedback = document.getElementById('feedback-area');
+                        
+                        if (isAllCorrect) {
+                            feedback.className = "feedback-box correct";
+                            let htmlContent = `<div>🎉 答對了！順利解鎖真相！</div><div class="reason-text">${quiz.reason}</div>`;
+                            
+                            if (quiz.videoUrl) {
+                                htmlContent += `<br><a href="${quiz.videoUrl}" target="_blank" class="video-btn-link">${quiz.videoText}</a>`;
+                            }
+                            feedback.innerHTML = htmlContent;
+                            feedback.classList.remove('hidden');
+                            
+                            const allBtns = container.querySelectorAll('button');
+                            allBtns.forEach(b => b.disabled = true);
+                            
+                            pathScores[currentPath] += currentQuizScoreMax;
+                            document.getElementById('next-btn').classList.remove('hidden');
+                        } else {
+                            feedback.className = "feedback-box wrong";
+                            feedback.innerHTML = `<div>${quiz.wrongMessage}</div>`;
+                            feedback.classList.remove('hidden');
+                            
+                            totalErrorClicks++; 
+                            const allBtns = container.querySelectorAll('button');
+                            allBtns.forEach(b => b.disabled = true);
+                            
+                            setTimeout(() => {
+                                selectedCustomIndexes = [];
+                                allBtns.forEach(b => {
+                                    b.classList.remove('selected-correct');
+                                    b.disabled = false;
+                                });
+                                feedback.classList.add('hidden');
+                            }, 1800);
+                        }
+                    }
+                };
+                container.appendChild(btn);
+            });
+        } 
+        else if (quiz.isDropdownQuiz) {
+            const wrap = document.createElement('div');
+            wrap.className = "select-layout";
+            
+            const sel = document.createElement('select');
+            sel.className = "select-style";
+            
+            const placeholderOpt = document.createElement('option');
+            placeholderOpt.value = "";
+            placeholderOpt.innerText = "👇 點擊此處展開並選擇敘述選項";
+            sel.appendChild(placeholderOpt);
+            
+            quiz.options.forEach((opt, idx) => {
+                if (idx === 0) return; 
+                const o = document.createElement('option');
+                o.value = idx;
+                o.innerText = opt;
+                sel.appendChild(o);
+            });
+            
+            const subBtn = document.createElement('button');
+            subBtn.className = "select-submit-btn";
+            subBtn.innerText = "發送回答驗證 ➔";
+            
+            subBtn.onclick = () => {
+                if(sel.value === "") { alert("⚠️ 請先選擇一個選項！"); return; }
+                const chosenIdx = parseInt(sel.value);
+                const feedback = document.getElementById('feedback-area');
+                
+                sel.disabled = true;
+                subBtn.disabled = true;
+                
+                if (chosenIdx === quiz.dropdownCorrectIndex) {
+                    feedback.className = "feedback-box correct";
+                    let htmlContent = `<div>🎉 答對了！環境架構驗證成功！</div><div class="reason-text">${quiz.reason}</div>`;
+                    if(quiz.videoUrl) {
+                        htmlContent += `<br><a href="${quiz.videoUrl}" target="_blank" class="video-btn-link">${quiz.videoText}</a>`;
+                    }
+                    feedback.innerHTML = htmlContent;
+                    pathScores[currentPath] += currentQuizScoreMax;
+                } else {
+                    currentQuizScoreMax = 0;
+                    totalErrorClicks++;
+                    feedback.className = "feedback-box wrong";
+                    feedback.innerHTML = `<div>${quiz.wrongMessage}</div>`;
+                    
+                    setTimeout(() => {
+                        sel.disabled = false;
+                        subBtn.disabled = false;
+                        sel.value = "";
+                        feedback.classList.add('hidden');
+                    }, 2000);
+                }
+                feedback.classList.remove('hidden');
+                if(chosenIdx === quiz.dropdownCorrectIndex) {
+                    document.getElementById('next-btn').classList.remove('hidden');
+                }
+            };
+            
+            wrap.appendChild(sel);
+            wrap.appendChild(subBtn);
+            container.appendChild(wrap);
+        }
+        else {
+            quiz.options.forEach((opt, idx) => {
+                const btn = document.createElement('button');
+                btn.className = "option-btn";
+                btn.innerText = opt;
+                btn.onclick = () => checkStandardAnswer(idx, quiz.ans, quiz.reason, btn);
+                container.appendChild(btn);
+            });
+        }
+        
+        updateFooterProgress();
     }
 
-    function checkAnswer(selectedIdx, btn) {
-        const quiz = allQuizzes[currentPath][currentQuizIndex];
+    function checkStandardAnswer(chosenIdx, correctIdx, reason, btnElement) {
         const feedback = document.getElementById('feedback-area');
-        feedback.classList.remove('hidden');
-        const buttons = document.getElementById('options-container').getElementsByTagName('button');
-        for(let b of buttons) b.disabled = true;
-
-        if(selectedIdx === quiz.ans) {
-            btn.classList.add('selected-correct');
+        const container = document.getElementById('options-container');
+        const allButtons = container.querySelectorAll('button');
+        
+        allButtons.forEach(b => b.disabled = true);
+        
+        if(chosenIdx === correctIdx) {
             feedback.className = "feedback-box correct";
-            feedback.innerHTML = "🎯 答對了！<div class='reason-text'>" + quiz.reason + "</div>";
-            currentBatteryScore += 20;
+            feedback.innerHTML = `<div>🎉 考察核心充能成功！</div><div class="reason-text">${reason}</div>`;
+            btnElement.classList.add('selected-correct');
+            pathScores[currentPath] += currentQuizScoreMax;
         } else {
-            btn.classList.add('selected-wrong');
-            buttons[quiz.ans].classList.add('highlight-correct-answer');
-            feedback.className = "feedback-box wrong";
-            feedback.innerHTML = "❌ 答錯了！<div class='reason-text'>" + quiz.reason + "</div>";
+            currentQuizScoreMax = 0; 
             totalErrorClicks++;
+            
+            const correctText = allQuizzes[currentPath][currentStageIndex].options[correctIdx];
+            
+            feedback.className = "feedback-box wrong";
+            feedback.innerHTML = `
+                <div>❌ 觀測點數據異常（你選錯囉）！</div>
+                <div style="margin-top:4px; color:#C53030;">💡 正確答案是：<span style="font-size:16px; font-weight:bold;">${correctText}</span></div>
+                <div class="reason-text">${reason}</div>
+            `;
+            btnElement.classList.add('selected-wrong');
+            
+            allButtons[correctIdx].style.borderColor = "var(--primary-color)";
+            allButtons[correctIdx].style.backgroundColor = "#F0FDF4";
         }
+        
+        feedback.classList.remove('hidden');
         document.getElementById('next-btn').classList.remove('hidden');
     }
 
-    document.getElementById('next-btn').onclick = () => {
-        currentQuizIndex++;
-        if(currentQuizIndex < allQuizzes[currentPath].length) { showQuiz(); } 
-        else {
-            document.getElementById('game-section').classList.add('hidden');
-            document.getElementById('game-footer').classList.add('hidden');
-            document.getElementById('path-section').classList.remove('hidden');
+    document.getElementById('next-btn').onclick = function() {
+        const totalStages = allQuizzes[currentPath].length;
+        if(currentStageIndex < totalStages - 1) {
+            currentStageIndex++;
+            loadCurrentQuiz();
+        } else {
+            isPathCompleted[currentPath] = true;
             document.getElementById('badge-' + currentPath).classList.remove('hidden');
+            document.getElementById('card-' + currentPath).classList.add('completed');
             
-            if(currentPath === 'land') landBatteryFinal = currentBatteryScore;
-            if(currentPath === 'water') waterBatteryFinal = currentBatteryScore;
-
-            if(!document.getElementById('badge-land').classList.contains('hidden') && 
-               !document.getElementById('badge-water').classList.contains('hidden')) {
-                document.getElementById('path-section').classList.add('hidden');
-                document.getElementById('result-section').classList.remove('hidden');
-                document.getElementById('final-land-energy').innerText = landBatteryFinal + " 分";
-                document.getElementById('final-water-energy').innerText = waterBatteryFinal + " 分";
-            }
+            startReviewMode();
         }
     };
 
-    document.getElementById('start-btn').onclick = () => {
-        const cls = document.getElementById('class-select').value;
-        const seat = document.getElementById('p1-seat').value;
-        const name = document.getElementById('p1-name').value;
-        if(!cls || !seat || !name) { alert('⚠️ 請填寫完整欄位！'); return; }
-        currentClassSelectValue = cls; inputP1Seat = seat; inputP1Name = name;
-        document.getElementById('welcome-msg').innerText = "你好，" + cls + "班 " + seat + "號 " + name + " 探險員！";
-        document.getElementById('login-section').classList.add('hidden');
-        document.getElementById('path-section').classList.remove('hidden');
+    document.getElementById('prev-btn').onclick = function() {
+        if(currentStageIndex > 0) {
+            currentStageIndex--;
+            loadCurrentQuiz();
+        } else {
+            showSection('path-section');
+        }
     };
 
-    document.getElementById('upload-btn').onclick = async () => {
-        const btn = document.getElementById('upload-btn');
-        btn.innerText = "⏳ 報告傳送中..."; btn.disabled = true;
-        try {
-            await addDoc(collection(db, "student_scores"), {
-                className: currentClassSelectValue, seat: inputP1Seat, studentName: inputP1Name,
-                landScore: landBatteryFinal, waterScore: waterBatteryFinal, timestamp: serverTimestamp()
+    function updateFooterProgress() {
+        const total = allQuizzes[currentPath].length;
+        const current = currentStageIndex + 1;
+        const pct = (current / total) * 100;
+        document.getElementById('progress').style.width = pct + "%";
+        document.getElementById('page-info').innerText = `探險進度 ${current} / ${total}`;
+    }
+
+    let activeReviewPool = [];
+    let placedItemsMap = {}; 
+    let currentSelectedPoolItemId = null;
+
+    function startReviewMode() {
+        showSection('review-section');
+        document.getElementById('review-feedback').classList.add('hidden');
+        document.getElementById('review-next-btn').classList.add('hidden');
+        
+        placedItemsMap = {};
+        currentSelectedPoolItemId = null;
+        
+        let filteredEcosystems = [];
+        
+        if(currentPath === 'land') {
+            currentLandGroupIndex = 0; 
+            landGroupPlacedCount = 0;
+            document.getElementById('review-main-title').innerText = "📜 陸域考察日誌充能任務";
+            filteredEcosystems = reviewEcosystems.slice(0, 6);
+            
+            filteredEcosystems.forEach(eco => {
+                placedItemsMap[eco.key] = [];
             });
-            document.getElementById('status-msg').innerText = "📤 報告傳送成功！";
-            btn.innerText = "✅ 傳送完畢";
-        } catch(e) {
-            alert("傳送失敗：" + e.message); btn.innerText = "📤 重新傳送報告"; btn.disabled = false;
+            
+            loadLandGroupCards();
+        } else {
+            currentWaterGroupIndex = 0;
+            waterGroupPlacedCount = 0;
+            document.getElementById('review-main-title').innerText = "📜 水域考察日誌充能任務";
+            filteredEcosystems = reviewEcosystems.slice(6, 12);
+            
+            filteredEcosystems.forEach(eco => {
+                placedItemsMap[eco.key] = [];
+            });
+            
+            loadWaterGroupCards();
+        }
+        
+        renderReviewGrid(filteredEcosystems);
+        renderReviewPool();
+        updateBatteryWidget();
+    }
+
+    function loadLandGroupCards() {
+        const group = landGroups[currentLandGroupIndex];
+        document.getElementById('review-story-text').innerText = `珍妮博士：『幹得好！接下來是陸域【${group.title}】。請將出現的卡牌點選後正確放入對應的陸域格子中！分完這組才能解鎖下一組。』`;
+        activeReviewPool = group.items.map(x => ({ ...x })).sort(() => Math.random() - 0.5);
+        landGroupPlacedCount = 0;
+    }
+
+    function loadWaterGroupCards() {
+        const group = waterGroups[currentWaterGroupIndex];
+        document.getElementById('review-story-text').innerText = `珍妮博士：『非常好！接下來是水域【${group.title}】。請仔細根據課本內容，將水域特徵字卡完美點選並放入對應的格子中，避免亂點瞎猜！』`;
+        activeReviewPool = group.items.map(x => ({ ...x })).sort(() => Math.random() - 0.5);
+        waterGroupPlacedCount = 0;
+    }
+
+    function renderReviewGrid(ecosystemList) {
+        const grid = document.getElementById('review-grid-container');
+        grid.innerHTML = "";
+        
+        ecosystemList.forEach(eco => {
+            const box = document.createElement('div');
+            box.className = "ecosystem-box";
+            box.innerHTML = `<h3>${eco.title}</h3>`;
+            
+            const dropZone = document.createElement('div');
+            dropZone.className = "drop-zone";
+            dropZone.id = `zone-${eco.key}`;
+            dropZone.innerText = "➕ 點此放入卡牌";
+            
+            box.onclick = () => {
+                if(!currentSelectedPoolItemId) {
+                    alert("💡 請先點選下方區塊中的某一塊『字卡』，再來點這裡放入！");
+                    return;
+                }
+                
+                const itemObj = activeReviewPool.find(x => x.id === currentSelectedPoolItemId);
+                if(!itemObj) return;
+                
+                const reply = document.getElementById('review-feedback');
+                
+                if (currentPath === 'land') {
+                    if (itemObj.target === eco.key) {
+                        placedItemsMap[eco.key].push(itemObj);
+                        activeReviewPool = activeReviewPool.filter(x => x.id !== currentSelectedPoolItemId);
+                        currentSelectedPoolItemId = null;
+                        landGroupPlacedCount++;
+                        
+                        reply.className = "feedback-box correct";
+                        reply.innerHTML = `🎉 擺放正確！核心能量上升！`;
+                        reply.classList.remove('hidden');
+                        
+                        refreshZoneDisplay(eco.key);
+                        
+                        const currentGroupTotal = landGroups[currentLandGroupIndex].items.length;
+                        if (landGroupPlacedCount === currentGroupTotal) {
+                            if (currentLandGroupIndex < landGroups.length - 1) {
+                                alert(`🌟 太厲害了！第 ${currentLandGroupIndex + 1} 組陸域字卡分類完全正確！準備挑戰下一組！`);
+                                currentLandGroupIndex++;
+                                loadLandGroupCards();
+                            } else {
+                                reply.innerHTML = `🎉 恭喜！四組陸域卡牌已全部完美歸位！核心電池充能完畢！`;
+                            }
+                        }
+                        
+                        renderReviewPool();
+                        updateBatteryWidget();
+                    } else {
+                        totalErrorClicks++; // 亂點扣分與記錄機制
+                        reply.className = "feedback-box wrong";
+                        reply.innerHTML = `❌ 生物環境不相容！『${itemObj.text}』無法在此生態系大量繁衍，亂點會計入扣分紀錄喔！`;
+                        reply.classList.remove('hidden');
+                        
+                        currentSelectedPoolItemId = null;
+                        renderReviewPool();
+                    }
+                } else {
+                    // 水域考核分階段歸類判斷
+                    if (itemObj.target === eco.key) {
+                        placedItemsMap[eco.key].push(itemObj);
+                        activeReviewPool = activeReviewPool.filter(x => x.id !== currentSelectedPoolItemId);
+                        currentSelectedPoolItemId = null;
+                        waterGroupPlacedCount++;
+                        
+                        reply.className = "feedback-box correct";
+                        reply.innerHTML = `🎉 擺放正確！水域日誌能量上升！`;
+                        reply.classList.remove('hidden');
+                        
+                        refreshZoneDisplay(eco.key);
+                        
+                        const currentWaterGroupTotal = waterGroups[currentWaterGroupIndex].items.length;
+                        if (waterGroupPlacedCount === currentWaterGroupTotal) {
+                            if (currentWaterGroupIndex < waterGroups.length - 1) {
+                                alert(`🌟 太厲害了！第 ${currentWaterGroupIndex + 1} 組水域字卡分類完全正確！解鎖下一組階段任務！`);
+                                currentWaterGroupIndex++;
+                                loadWaterGroupCards();
+                            } else {
+                                reply.innerHTML = `🎉 恭喜！四組水域特徵字卡已全部完美歸位！探險艇傳送陣已完全充能！`;
+                            }
+                        }
+                        
+                        renderReviewPool();
+                        updateBatteryWidget();
+                    } else {
+                        totalErrorClicks++; // 水域點錯懲罰累加
+                        reply.className = "feedback-box wrong";
+                        reply.innerHTML = `❌ 數據不對喔！根據課本特徵，『${itemObj.text}』不屬於${eco.title}。請勿亂點猜題！`;
+                        reply.classList.remove('hidden');
+                        
+                        currentSelectedPoolItemId = null;
+                        renderReviewPool();
+                    }
+                }
+            };
+            
+            box.appendChild(dropZone);
+            grid.appendChild(box);
+            
+            refreshZoneDisplay(eco.key);
+        });
+    }
+
+    function refreshZoneDisplay(ecoKey) {
+        const zone = document.getElementById(`zone-${ecoKey}`);
+        if(!zone) return;
+        
+        const list = placedItemsMap[ecoKey];
+        if(!list || list.length === 0) {
+            zone.innerHTML = "➕ 點此放入卡牌";
+            zone.style.background = "#EDF2F7";
+        } else {
+            zone.innerHTML = "";
+            zone.style.background = "#E6FFFA";
+            list.forEach(item => {
+                const d = document.createElement('div');
+                d.className = "placed-item";
+                d.innerText = item.text;
+                zone.appendChild(d);
+            });
+        }
+    }
+
+    function renderReviewPool() {
+        const pool = document.getElementById('items-pool');
+        pool.innerHTML = "";
+        
+        if(activeReviewPool.length === 0) {
+            if(currentPath === 'land' && currentLandGroupIndex === landGroups.length - 1 && landGroupPlacedCount === landGroups[3].items.length) {
+                pool.innerHTML = "<div style='color:#2563EB; font-weight:bold; padding:10px;'>🌟 恭喜！所有陸域特徵分組卡牌皆已完美歸位！</div>";
+            } else if (currentPath === 'water' && currentWaterGroupIndex === waterGroups.length - 1 && waterGroupPlacedCount === waterGroups[3].items.length) {
+                pool.innerHTML = "<div style='color:#2563EB; font-weight:bold; padding:10px;'>🌟 恭喜！所有水域特徵分組卡牌皆已完美歸位！</div>";
+            }
+            return;
+        }
+        
+        activeReviewPool.forEach(item => {
+            const div = document.createElement('div');
+            div.className = "pool-item";
+            if(item.id === currentSelectedPoolItemId) div.classList.add('selected');
+            div.innerText = item.text;
+            
+            div.onclick = (e) => {
+                e.stopPropagation();
+                if(currentSelectedPoolItemId === item.id) {
+                    currentSelectedPoolItemId = null;
+                } else {
+                    currentSelectedPoolItemId = item.id;
+                }
+                renderReviewPool();
+            };
+            
+            pool.appendChild(div);
+        });
+    }
+
+    function updateBatteryWidget() {
+        let maxItems = currentPath === 'land' ? 25 : 24; 
+        let currentPlaced = 0;
+        
+        let filteredKeys = currentPath === 'land' ? 
+            ["tundra", "desert", "needle", "broad", "rainforest", "grass"] : 
+            ["stream", "estuary", "intertidal", "coral", "ocean_sun", "ocean_deep"];
+            
+        filteredKeys.forEach(k => {
+            if(placedItemsMap[k]) currentPlaced += placedItemsMap[k].length;
+        });
+        
+        let pct = Math.min(100, Math.floor((currentPlaced / maxItems) * 100));
+        currentBatteryScore = pct;
+        
+        document.getElementById('live-battery-fill').style.width = pct + "%";
+        document.getElementById('live-battery-text').innerText = `${pct} / 100 🔋`;
+        
+        if(pct >= 100) {
+            document.getElementById('review-next-btn').classList.remove('hidden');
+        }
+    }
+
+    window.finishReview = function() {
+        if(currentPath === 'land') {
+            landBatteryFinal = currentBatteryScore;
+        } else {
+            waterBatteryFinal = currentBatteryScore;
+        }
+        
+        if(isPathCompleted.land && isPathCompleted.water) {
+            showSection('result-section');
+            calculateFinalResult();
+        } else {
+            showSection('path-section');
+        }
+    };
+
+    function calculateFinalResult() {
+        let totalScore = pathScores.land + pathScores.water; 
+        let rank = "三星傳奇探險家 🎖️";
+        if(totalErrorClicks >= 15) rank = "見習新秀調查員 🔍";
+        else if(totalErrorClicks >= 7) rank = "資深菁英探險家 🎒";
+        
+        document.getElementById('final-stats').innerHTML = `探險榮譽頭銜：<span style="color:#D97706; font-size:26px;">${rank}</span><br>觀測點回答總積分：${totalScore} 分`;
+        document.getElementById('final-land-energy').innerText = `${pathScores.land} 分`;
+        document.getElementById('final-water-energy').innerText = `${pathScores.water} 分`;
+        document.getElementById('final-error-clicks').innerText = `${totalErrorClicks} 次`;
+        
+        document.getElementById('upload-btn').disabled = false;
+        document.getElementById('upload-btn').innerText = "📤 傳送完整報告";
+        document.getElementById('status-msg').innerText = "💡 提示：請點擊上方按鈕，將數據同步至雲端後台，老師才看得到成果喔！";
+    }
+
+    document.getElementById('upload-btn').onclick = async function() {
+        const btn = document.getElementById('upload-btn');
+        btn.disabled = true;
+        btn.innerText = "⏳ 報告發射中...";
+        document.getElementById('status-msg').innerText = "正在聯絡 Firebase 總部基地台...";
+        
+        try {
+            let record = {
+                className: currentClassSelectValue,
+                p1Seat: inputP1Seat,
+                p1Name: inputP1Name,
+                isDouble: isDoubleMode,
+                p2Seat: isDoubleMode ? document.getElementById('p2-seat').value.trim() : "",
+                p2Name: isDoubleMode ? document.getElementById('p2-name').value.trim() : "",
+                landScore: pathScores.land,
+                waterScore: pathScores.water,
+                totalScore: pathScores.land + pathScores.water,
+                errorClicks: totalErrorClicks,
+                createdAt: serverTimestamp()
+            };
+            
+            await addDoc(collection(db, "student_scores"), record);
+            
+            document.getElementById('status-msg').style.color = "#16A34A";
+            document.getElementById('status-msg').innerText = "🎉 報告上傳成功！已寫入教師戰情主控台。你們可以關閉視窗休息囉！";
+            btn.innerText = "✅ 上傳成功";
+        } catch (e) {
+            console.error(e);
+            document.getElementById('status-msg').style.color = "#DC2626";
+            document.getElementById('status-msg').innerText = "❌ 傳輸失敗。請檢查學校網路，或請老師前來查看原因！";
+            btn.disabled = false;
+            btn.innerText = "重試上傳";
+        }
+    };
+
+    let cachedAllStudentsData = [];
+    document.getElementById('teacher-gate-icon').onclick = function() {
+        const pw = prompt("🔑 請輸入教師主控台密碼：");
+        if(pw === "1023") {
+            showSection('teacher-section');
+            renderTeacherClassTabs();
+        } else if(pw !== null) {
+            alert("❌ 密碼錯誤！無法進入機密檔案。");
+        }
+    };
+
+    document.getElementById('teacher-back-btn').onclick = function() {
+        showSection('login-section');
+    };
+
+    function renderTeacherClassTabs() {
+        const container = document.getElementById('teacher-class-tabs');
+        container.innerHTML = "";
+        
+        for(let i=1; i<=15; i++) {
+            let c = "7" + String(i).padStart(2, '0');
+            const btn = document.createElement('button');
+            btn.className = "tab-btn";
+            btn.innerText = c + " 班";
+            btn.onclick = () => {
+                const allTabs = container.querySelectorAll('.tab-btn');
+                allTabs.forEach(t => t.classList.remove('active'));
+                btn.classList.add('active');
+                loadClassDataFromFirebase(c);
+            };
+            container.appendChild(btn);
+        }
+    }
+
+    async function loadClassDataFromFirebase(className) {
+        const listContainer = document.getElementById('student-cards-list');
+        listContainer.innerHTML = `<div style="text-align:center; padding:30px; color:var(--water-color); font-weight:bold;">⏳ 正在連線 Firebase 雲端資料庫，抓取 ${className} 班最新數據...</div>`;
+        
+        try {
+            const q = query(collection(db, "student_scores"), orderBy("createdAt", "desc"));
+            const snapshot = await getDocs(q);
+            cachedAllStudentsData = [];
+            
+            snapshot.forEach(docSnap => {
+                cachedAllStudentsData.push({ id: docSnap.id, ...docSnap.data() });
+            });
+            
+            displayClassCards(className);
+        } catch (err) {
+            listContainer.innerHTML = `<div style="color:var(--danger); text-align:center; padding:20px;">❌ 讀取雲端失敗：${err.message}</div>`;
+        }
+    }
+
+    function displayClassCards(className) {
+        const listContainer = document.getElementById('student-cards-list');
+        listContainer.innerHTML = "";
+        
+        const filtered = cachedAllStudentsData.filter(item => item.className === className);
+        
+        if(filtered.length === 0) {
+            listContainer.innerHTML = `<div style="text-align:center; padding:40px; color:#94A3B8; font-size:16px;">📭 該班級目前尚無任何學生提交成果報告。</div>`;
+            return;
+        }
+        
+        filtered.forEach(student => {
+            const card = document.createElement('div');
+            card.className = "student-card";
+            
+            let nameStr = `${student.p1Seat}號 ${student.p1Name}`;
+            if(student.isDouble) {
+                nameStr += ` 🤝 ${student.p2Seat}號 ${student.p2Name}`;
+            }
+            
+            let timeStr = "未知時間";
+            if(student.createdAt && student.createdAt.toDate) {
+                const t = student.createdAt.toDate();
+                timeStr = `${t.getMonth()+1}/${t.getDate()} ${String(t.getHours()).padStart(2,'0')}:${String(t.getMinutes()).padStart(2,'0')}`;
+            }
+            
+            card.innerHTML = `
+                <div class="student-info">
+                    <div class="student-meta">${nameStr}</div>
+                    <div class="student-data-line">
+                        <span>🏔️ 陸域：${student.landScore || 0}分</span>
+                        <span>🌊 水域：${student.waterScore || 0}分</span>
+                        <span>⚠️ 點錯：<b style="color:#EF4444">${student.errorClicks || 0}次</b></span>
+                        <span style="color:#64748B; font-weight:normal; margin-left:10px;">⏰ ${timeStr}</span>
+                    </div>
+                </div>
+                <button class="class-btn-delete" onclick="deleteStudentData('${student.id}', '${className}', '${student.p1Name}', this)">🗑️ 刪除</button>
+            `;
+            listContainer.appendChild(card);
+        });
+    }
+
+    window.deleteStudentData = async function(docId, className, studentName, btnElement) {
+        const confirmDelete = confirm(`⚠️ 確定要刪除「${className}班 ${studentName}」的此筆作答資料嗎？\n刪除後無法復原，但該位學生可以重新登入作答。`);
+        if (!confirmDelete) return;
+        
+        btnElement.innerText = "⏳ 刪除中...";
+        btnElement.disabled = true;
+        
+        try {
+            await deleteDoc(doc(db, "student_scores", docId));
+            cachedAllStudentsData = cachedAllStudentsData.filter(item => item.id !== docId);
+            
+            const card = btnElement.closest('.student-card');
+            card.style.transition = "0.3s";
+            card.style.opacity = "0";
+            card.style.transform = "translateX(50px)";
+            setTimeout(() => {
+                card.remove();
+                const listContainer = document.getElementById('student-cards-list');
+                if (listContainer.children.length === 0) {
+                    listContainer.innerHTML = `<div style="text-align:center; padding:40px; color:#94A3B8; font-size:16px;">📭 該班級目前尚無任何學生提交成果報告。</div>`;
+                }
+            }, 300);
+        } catch (err) {
+            alert("❌ 刪除失敗：" + err.message);
+            btnElement.innerText = "🗑️ 刪除";
+            btnElement.disabled = false;
         }
     };
 </script>
+
 </body>
 </html>
